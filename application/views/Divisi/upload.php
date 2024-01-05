@@ -1,54 +1,71 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>File Sharing System | UPLOAD </title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Form Upload Data</title>
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href=""><b>UPLOAD FILE</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+  <b><?php if(isset($response)) echo $response; ?></b>
 
-<body>
-    <div class="container">
-        <div class="row mt-3">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        Form Upload Data
-                        <b><?php if(isset($response)) echo $response; ?></b>
-                    </div>
-                    <div class="card-body">
-                        <form method='post' action='' enctype='multipart/form-data'>
-                            <div class="form-group">
-                                <label for="kode">Kode</label>
-                                <input type="text" class="form-control" name="kode" name="kode" placeholder="silahkan masukkan kode...">
-                            </div>
-                            <div class="form-group">
-                                <label for="uraian">Uraian</label>
-                                <input type="text" class="form-control" name="uraian" name="uraian" placeholder="data yang diupload...">
-                            </div>
-                            <div class="form-group">
-                                <label for="file">File</label>
-                                <input type="file" class="form-control-file" name="file">
-                            </div>
-                            <div class="submit">
-                                <input type='submit' value='Upload' name='upload' />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+    <form method='post' action='' enctype='multipart/form-data'>
+        <div class="form-group">
+            <label for="kode">Kode</label>
+            <input type="text" class="form-control" name="kode" name="kode" placeholder="silahkan masukkan kode...">
         </div>
-    </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
+        <div class="form-group">
+            <label for="uraian">Uraian</label>
+            <input type="text" class="form-control" name="uraian" name="uraian" placeholder="data yang diupload...">
+        </div>
+        <div class="form-group">
+            <label for="file">File</label>
+            <input type="file" class="form-control-file" name="file">
+        </div>
+        <div class="submit">
+            <input type='submit' value='Upload' name='upload' />
+        </div>
+    </form>
+    <!-- /.social-auth-links -->
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
 
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="../../plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+</script>
+</body>
 </html>

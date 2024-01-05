@@ -1,34 +1,46 @@
-<div class="container">
-    <div class="row">
-        <?php
-        if ($this->session->userdata('peringkat') != 'guest') {
-            echo '<div class="col-md-6">
-            <a href="'.base_url($divisi).'/upload_data" class="btn btn-primary">Upload Data</a>
-        </div>';
-        }
-        ?>
-        
-    </div>
-    <div class="card mt-3">
-        <div class="card-header bg-info text-white">
-            <?= $title; ?>
-        </div>
-        <div class="card-body">
-            <table class="table table-borderd table-hovered table-striped">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Divisi - Menu
+      </h1>
+      
+    </section>
+
+<section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+          <div class="box-header with-border">
+              <h3 class="box-title"><?= $title; ?></h3>
+              <?php
+                if ($this->session->userdata('peringkat') != 'guest') {
+                    echo '<a href="'.base_url($divisi).'/upload_data" class="btn btn-primary">Upload Data</a>';
+                }
+            ?>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+           
+            <br>
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
                 <tr>
                     <th>No</th>
                     <th>Tanggal</th>
                     <th>Kode</th>
                     <th>Uraian</th>
-                    <th>Status</th>
                     <th>File</th>
                     <?php
                     if ($this->session->userdata('peringkat') != 'guest') {
-                        echo '<th>Aksi</th>';
+                        echo '<th>Status</th>
+                        <th>Aksi</th>';
                     }
                     ?>
-                    
                 </tr>
+                </thead>
+                <tbody>
                 <?php
                 $no = 1;
                 foreach ($raw_data as $data) : ?>
@@ -37,26 +49,26 @@
                         <td><?php echo $data->Tanggal; ?></td>
                         <td><?php echo $data->Kode; ?></td>
                         <td><?php echo $data->Uraian; ?></td>
-                        <td>
-                            <?php 
+                        
+                        <td><a href="<?php echo base_url('uploads/').$data->File; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
+                        <?php 
+                        if ($this->session->userdata('peringkat') != 'guest') {
                             switch ($data->Status) {
                                 case 'Valid':
-                                    echo '<span class="badge badge-success">Approved</span>';
+                                    echo '<td><span class="label bg-green">Approved</span></td>';
                                 break;
 
                                 case 'Butuh Validasi':
-                                    echo '<span class="badge badge-warning">Butuh Validasi</span>';
+                                    echo '<td><span class="label bg-yellow">Butuh Validasi</span></td>';
                                 break;
 
                                 case 'Ditolak':
-                                    echo '<span class="badge badge-danger">Ditolak</span>';
+                                    echo '<td><span class="label bg-red">Ditolak</span></td>';
                                 break;
                             }
-                            ?>
-                            
-                        </td>
-                        <td><a href="<?php echo base_url('uploads/').$data->File; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
-                        
+                        }   
+                        ?>
+                    
                         <?php
                         if ($this->session->userdata('peringkat') != 'guest') {
                             echo '<td><a href="'.base_url($divisi."/edit_data/").$data->No.'" class="btn btn btn-primary">Edit</a>
@@ -67,11 +79,34 @@
                         
                     </tr>
                 <?php endforeach ?>
-            </table>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>No</th>
+                    <th>Tanggal</th>
+                    <th>Kode</th>
+                    <th>Uraian</th>
+                    <?php
+                    if ($this->session->userdata('peringkat') != 'guest') {
+                        echo '<th>Status</th>
+                        <th>Aksi</th>';
+                    }
+                    ?>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
-    </div>
-</div>
-<script>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <script>
         function validate(id) {
             var valid = confirm("Kamu Yakin ingin Menghapus data ini ?");
             if (valid) {
@@ -79,5 +114,3 @@
             }
         }
     </script>
-
-
