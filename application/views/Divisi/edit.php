@@ -27,6 +27,14 @@
                     <label for="uraian">Uraian</label>
                     <input type="text" class="form-control" name="uraian" name="uraian" value="<?= $dataedit->Uraian ?>">
                 </div>
+                <div class="form-group">
+                    <label for="Link">Link</label>
+                    <input type="text" class="form-control" name="link" name="link" value="<?= $dataedit->link ?>">
+                </div>
+                <div class="form-group">
+                    <label for="Link">Catatan / Alasan Ditolak</label>
+                    <input type="text" class="form-control"  value="<?= $dataedit->catatan ?>" disabled>
+                </div>
                 <?php
                 if($this->session->userdata('peringkat') != "guest"){
                     echo ' <div class="form-group">

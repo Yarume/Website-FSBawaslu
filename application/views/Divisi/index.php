@@ -32,6 +32,7 @@
                     <th>Kode</th>
                     <th>Uraian</th>
                     <th>File</th>
+                    <th>Link</th>
                     <?php
                     if ($this->session->userdata('peringkat') != 'guest') {
                         echo '<th>Status</th>
@@ -51,6 +52,7 @@
                         <td><?php echo $data->Uraian; ?></td>
                         
                         <td><a href="<?php echo base_url('uploads/').$data->File; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
+                        <td><a href="<?php echo $data->link; ?>" target="_blank" rel="noopener noreferrer">Link</a></td>
                         <?php 
                         if ($this->session->userdata('peringkat') != 'guest') {
                             switch ($data->Status) {
@@ -82,10 +84,12 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th>No</th>
+                <th>No</th>
                     <th>Tanggal</th>
                     <th>Kode</th>
                     <th>Uraian</th>
+                    <th>File</th>
+                    <th>Link</th>
                     <?php
                     if ($this->session->userdata('peringkat') != 'guest') {
                         echo '<th>Status</th>

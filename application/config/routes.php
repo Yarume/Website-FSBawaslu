@@ -14,3 +14,4 @@ $route['dashboard'] = 'dashboard/index';
 
 //Super-Admin Menu
 $route['verifikasi/(:any)/(:any)/(:any)'] = 'Verifikasi/hasil_verifikasi/$1/$2/$3';
+$route['Catatan/(:any)/(:any)'] = 'Verifikasi/tolak_catatan/$1/$2';

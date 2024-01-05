@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Blank Page</title>
+  <title>File Sharing System | Admin Page</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="/../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="/../../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="/../../dist/css/skins/_all-skins.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,11 +37,11 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>FS</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>File</b>Sharing</span>
+      <span class="logo-lg"><img src="/uploads/Logo.png"></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -64,29 +64,22 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="/../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs"><?= strtoupper($this->session->userdata('username')) ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="/../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   <?= strtoupper($this->session->userdata('username')) ?> - <?= strtoupper($this->session->userdata('peringkat')) ?>
                 </p>
               </li>
-              <li class="user-footer">
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+          
         </ul>
       </div>
     </nav>
@@ -101,7 +94,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="/../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?= strtoupper($this->session->userdata('username')) ?></p>
@@ -112,6 +105,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li><a href="/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-th"></i>
@@ -121,28 +115,36 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url(); ?>hukum"><i class="fa fa-circle-o"></i> <small>Hukum & Penyelesaian Sengketa</small></a></li>
-            <li><a href="<?= base_url(); ?>pencegahan"><i class="fa fa-circle-o"></i> <small>Pencegahan, PARMAS & HUMAS</small></a></li>
-            <li><a href="<?= base_url(); ?>penanganan"><i class="fa fa-circle-o"></i> <small>Penanganan Pelanggaran, <br>Data & Informasi</small></a></li>
-            <li><a href="<?= base_url(); ?>sdm"><i class="fa fa-circle-o"></i> <small>SDM, Organisasi, <br>Pendidikan & Pelatihan</small></a></li>
+            <li><a href="<?= base_url(); ?>hukum"><i class="fa fa-circle-o"></i> Hukum & <br>Penyelesaian Sengketa</a></li>
+            <li><a href="<?= base_url(); ?>pencegahan"><i class="fa fa-circle-o"></i> Pencegahan,<br> PARMAS & HUMAS</a></li>
+            <li><a href="<?= base_url(); ?>penanganan"><i class="fa fa-circle-o"></i> Penanganan Pelanggaran, <br>Data & Informasi</a></li>
+            <li><a href="<?= base_url(); ?>sdm"><i class="fa fa-circle-o"></i> SDM, Organisasi, <br>Pendidikan & Pelatihan</a></li>
           </ul>
         </li>
-        <li>
-          <a href="<?= base_url(); ?>tamanpustaka">
-            <i class="fa fa-book"></i> <span>Taman Pustaka</span>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-book"></i>
+            <span>Taman Pustaka</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">Hot</small>
+              <span class="label label-primary pull-right">2</span>
             </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="<?= base_url(); ?>tamanpustaka/buku"><i class="fa fa-circle-o"></i> Buku </a></li>
+            <li><a href="<?= base_url(); ?>tamanpustaka/majalah"><i class="fa fa-circle-o"></i> Majalah</a></li>
+          </ul>
         </li>
 
+        
+
         <?php
-                    if ($this->session->userdata('peringkat') == 'superadmin') {
-                        echo '
-                        <li><a href="'.base_url().'verifikasi"><i class="fa fa-check"></i> <span>Verifikasi</span></a></li>
-                        ';
-                    }
-                    ?>
+          if ($this->session->userdata('peringkat') == 'superadmin') {
+              echo '
+              <li><a href="'.base_url().'verifikasi"><i class="fa fa-check"></i> <span>Verifikasi</span></a></li>
+              ';
+          }
+        ?>
         <li class="header">Account</li>
         <li><a href="<?= base_url(); ?>user/logout"><i class="fa fa-circle-o text-red"></i> <span>Logout</span></a></li>
       </ul>

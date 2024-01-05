@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>File Sharing System | UPLOAD </title>
+  <title>File Sharing System | TOLAK CATATAN </title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/../../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="/../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/../../dist/css/AdminLTE.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
+  <link rel="stylesheet" href="/../../plugins/iCheck/square/blue.css">
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -23,7 +23,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href=""><b>UPLOAD FILE</a>
+    <a href=""><b>Tolak Verifikasi Data</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -32,22 +32,27 @@
     <form method='post' action='' enctype='multipart/form-data'>
         <div class="form-group">
             <label for="kode">Kode</label>
-            <input type="text" class="form-control" name="kode" name="kode" placeholder="silahkan masukkan kode...">
+            <input type="text" class="form-control" value="<?= $data->Kode; ?>" disabled>
         </div>
         <div class="form-group">
             <label for="uraian">Uraian</label>
-            <input type="text" class="form-control" name="uraian" name="uraian" placeholder="data yang diupload...">
+            <input type="text" class="form-control" value="<?= $data->Uraian; ?>" disabled>
         </div>
         <div class="form-group">
             <label for="uraian">Link</label>
-            <input type="text" class="form-control" name="link" name="link" placeholder="Link Google Drive">
+            <input type="text" class="form-control" value="<?= $data->link; ?>" disabled>
         </div>
         <div class="form-group">
-            <label for="file">File</label>
-            <input type="file" class="form-control-file" name="file">
+            <label for="uraian">Unduh File</label>
+            <br>
+            <a href="<?php echo base_url('uploads/').$data->File; ?>" target="_blank" rel="noopener noreferrer">File</a>
+        </div>
+        <div class="form-group">
+            <label for="uraian">Catatan</label>
+            <input type="text" class="form-control" id="catatan" name="catatan">
         </div>
         <div class="submit">
-            <input type='submit' value='Upload' name='upload' />
+            <input type='submit' value='tolak' name='tolak' />
         </div>
     </form>
     <!-- /.social-auth-links -->
@@ -57,11 +62,11 @@
 <!-- /.login-box -->
 
 <!-- jQuery 3 -->
-<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
+<script src="/../../plugins/iCheck/icheck.min.js"></script>
 <script>
   $(function () {
     $('input').iCheck({

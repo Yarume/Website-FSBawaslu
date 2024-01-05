@@ -1,23 +1,36 @@
-<div class="container d-flex justify-content-center align-items-center mx-auto">
-    <div class="card mx-2" style="width: 18rem;">
-        <img class="card-img-top" src="assets\img\logomajalah.jpg" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title text-center">MAJALAH</h5>
-            <p class="card-text text-center">Badan Pengawas Pemilihan Umum Provinsi Bali</p>
-            <div class="card-body">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      
+      
+    </section>
+
+<section class="content">
+      <div class="row">
+
+        <div class="col-xs-6">
+          <div class="box">
+          <div class="box-header with-border">
+              <h3 class="box-title">MAJALAH</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+            <div class="embed-responsive embed-responsive-16by9">
+            <img class="mx-auto d-block" src="assets\img\logomajalah.jpg" alt="Card image cap">
+                  </div>
+                
                 <a href="<?= base_url(); ?>tamanpustaka/majalah" class="btn mx-5 btn-primary">MASUK</a>
             </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
-    </div>
 
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="assets\img\logobuku.jpg" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title text-center">BUKU</h5>
-            <p class="card-text text-center">Badan Pengawas Pemilihan Umum Provinsi Bali</p>
-            <div class="card-body">
-                <a href="<?= base_url(); ?>tamanpustaka/buku" class="btn mx-5 btn-primary">MASUK</a>
-            </div>
-        </div>
-    </div>
-</div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+

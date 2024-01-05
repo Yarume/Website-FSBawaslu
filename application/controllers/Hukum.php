@@ -42,6 +42,7 @@ class Hukum extends CI_Controller
                         'Kode' => $kode,
                         'Uraian' => $uraian,
                         'File' => 'Hukum/'.$filenem,
+                        'Catatan' => '',
                         'Status' => 'Butuh Validasi'
                     );
                     $riwayat = array(
@@ -56,6 +57,7 @@ class Hukum extends CI_Controller
                     $ArrUpdate = array(
                         'Kode' => $kode,
                         'Uraian' => $uraian,
+                        'Catatan' => '',
                         'Status' => 'Butuh Validasi'
                     );
                 }
@@ -90,7 +92,7 @@ class Hukum extends CI_Controller
 
             $kode = $this->input->post('kode');
             $uraian = $this->input->post('uraian');
-            
+            $link = $this->input->post('link');
             if (empty($kode) && empty($uraian)) {
                 $data['response'] = 'Gagal!, kolom kode dan uraian kosong';
 
@@ -98,14 +100,28 @@ class Hukum extends CI_Controller
                 $data['response'] = 'Gagal!, File belum di pilih';
 
             }else if($filenem){
-                $datainsert = array(
-                    'username' => $this->session->userdata('username'),
-                    'Tanggal' => date('Y-m-d'),
-                    'Kode' => $kode,
-                    'Uraian' => $uraian,
-                    'File' => 'Hukum/'.$filenem,
-                    'Status' => 'Butuh Validasi'
-                );
+                if($this->session->userdata('peringkat') == "superadmin"){
+                    $datainsert = array(
+                        'username' => $this->session->userdata('username'),
+                        'Tanggal' => date('Y-m-d'),
+                        'Kode' => $kode,
+                        'Uraian' => $uraian,
+                        'File' => 'Hukum/'.$filenem,
+                        'link' => $link,
+                        'Status' => 'Valid'
+                    );
+                }else{
+                    $datainsert = array(
+                        'username' => $this->session->userdata('username'),
+                        'Tanggal' => date('Y-m-d'),
+                        'Kode' => $kode,
+                        'Uraian' => $uraian,
+                        'File' => 'Hukum/'.$filenem,
+                        'link' => $link,
+                        'Status' => 'Butuh Validasi'
+                    );
+                }
+                
                 $this->Hukum_model->insert($datainsert);
                 $data['response'] = 'successfully uploaded'; 
                 redirect('/hukum');
