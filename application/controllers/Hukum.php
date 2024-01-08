@@ -36,14 +36,18 @@ class Hukum extends CI_Controller
             if($this->input->post('update') != NULL ){ 
                 $kode = $this->input->post('kode');
                 $uraian = $this->input->post('uraian');
+                $link = $this->input->post('link');
+
+                $suadmin = ($this->session->userdata('peringkat') == "superadmin");
                 if (!empty($_FILES['file']['name'])) {
                     $filenem = $this->upload_file();
                     $ArrUpdate = array(
                         'Kode' => $kode,
                         'Uraian' => $uraian,
                         'File' => 'Hukum/'.$filenem,
+                        'link' => $link,
                         'Catatan' => '',
-                        'Status' => 'Butuh Validasi'
+                        'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
                     );
                     $riwayat = array(
                         'username' => $this->session->userdata('username'),
@@ -57,8 +61,9 @@ class Hukum extends CI_Controller
                     $ArrUpdate = array(
                         'Kode' => $kode,
                         'Uraian' => $uraian,
+                        'link' => $link,
                         'Catatan' => '',
-                        'Status' => 'Butuh Validasi'
+                        'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
                     );
                 }
                 $this->Hukum_model->update($id, $ArrUpdate);

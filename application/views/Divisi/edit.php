@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group">
                     <label for="Link">Catatan / Alasan Ditolak</label>
-                    <input type="text" class="form-control"  value="<?= $dataedit->catatan ?>" disabled>
+                    <input type="text" class="form-control" value="<?= $dataedit->catatan ?>" disabled>
                 </div>
                 <?php
                 if($this->session->userdata('peringkat') != "guest"){

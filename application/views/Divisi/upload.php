@@ -28,8 +28,7 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
   <b><?php if(isset($response)) echo $response; ?></b>
-
-    <form method='post' action='' enctype='multipart/form-data'>
+    <form method='post' action='#' enctype='multipart/form-data'>
         <div class="form-group">
             <label for="kode">Kode</label>
             <input type="text" class="form-control" name="kode" name="kode" placeholder="silahkan masukkan kode...">
@@ -47,7 +46,7 @@
             <input type="file" class="form-control-file" name="file">
         </div>
         <div class="submit">
-            <input type='submit' value='Upload' name='upload' />
+            <input type='submit' value='Upload' name='upload' id="upload" />
         </div>
     </form>
     <!-- /.social-auth-links -->

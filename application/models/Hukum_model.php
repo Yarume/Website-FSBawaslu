@@ -6,7 +6,11 @@ class Hukum_model extends CI_Model
 
     function getAllHukum()
     {
-        $query = $this->db->get($this->_tables);
+        if($this->session->userdata('peringkat') == "guest")
+            $query = $this->db->where('Status','Valid')->get($this->_tables);
+        else 
+            $query = $this->db->get($this->_tables);
+        
         return $query->result();
     }
     function get_NV_data(){

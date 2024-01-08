@@ -6,8 +6,11 @@ class Penanganan_Model extends CI_Model
 
     function getAllPenanganan()
     {
-        $query = $this->db->get($this->_tables);
-        return $query->result();
+        if($this->session->userdata('peringkat') == "guest")
+            $query = $this->db->where('Status','Valid')->get($this->_tables);
+        else 
+            $query = $this->db->get($this->_tables);
+            return $query->result();
     }
     function get_NV_data(){
         $query = $this->db->where('Status','Butuh Validasi')->get($this->_tables);

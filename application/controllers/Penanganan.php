@@ -27,7 +27,7 @@ class Penanganan extends CI_Controller
 
     public function upload_data()
     {
-        if($this->session->userdata('peringkat') != "guest"){
+        if($this->session->userdata('peringkat') == "guest"){
 			redirect(base_url("/dashboard"));
 		}
         if ($this->input->post('upload')) {
@@ -37,7 +37,8 @@ class Penanganan extends CI_Controller
 
             $kode = $this->input->post('kode');
             $uraian = $this->input->post('uraian');
-            
+            $link = $this->input->post('link');
+            $suadmin = ($this->session->userdata('peringkat') == "superadmin");
             if (empty($kode) && empty($uraian)) {
                 $data['response'] = 'Gagal!, kolom kode dan uraian kosong';
 
@@ -45,25 +46,15 @@ class Penanganan extends CI_Controller
                 $data['response'] = 'Gagal!, File belum di pilih';
 
             }else if($filenem){
-                if($this->session->userdata('peringkat') == "superadmin"){
-                    $datainsert = array(
-                        'username' => $this->session->userdata('username'),
-                        'Tanggal' => date('Y-m-d'),
-                        'Kode' => $kode,
-                        'Uraian' => $uraian,
-                        'File' => 'Penanganan/'.$filenem,
-                        'Status' => 'Valid'
-                    );
-                }else{
-                    $datainsert = array(
-                        'username' => $this->session->userdata('username'),
-                        'Tanggal' => date('Y-m-d'),
-                        'Kode' => $kode,
-                        'Uraian' => $uraian,
-                        'File' => 'Penanganan/'.$filenem,
-                        'Status' => 'Butuh Validasi'
-                    );
-                }
+                $datainsert = array(
+                    'username' => $this->session->userdata('username'),
+                    'Tanggal' => date('Y-m-d'),
+                    'Kode' => $kode,
+                    'Uraian' => $uraian,
+                    'File' => 'Penanganan/'.$filenem,
+                    'link' => $link,
+                    'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
+                );
                 $this->Penanganan_model->insert($datainsert);
                 $data['response'] = 'successfully uploaded'; 
                 redirect('/Penanganan');
@@ -89,14 +80,17 @@ class Penanganan extends CI_Controller
             if($this->input->post('update') != NULL ){ 
                 $kode = $this->input->post('kode');
                 $uraian = $this->input->post('uraian');
+                $link = $this->input->post('link');
+                $suadmin = ($this->session->userdata('peringkat') == "superadmin");
                 if (!empty($_FILES['file']['name'])) {
                     $filenem = $this->upload_file();
                     $ArrUpdate = array(
                         'Kode' => $kode,
                         'Uraian' => $uraian,
                         'File' => 'Penanganan/'.$filenem,
+                        'link' => $link,
                         'Catatan' => '',
-                        'Status' => 'Butuh Validasi'
+                        'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
                     );
                     $riwayat = array(
                         'username' => $this->session->userdata('username'),
@@ -111,7 +105,8 @@ class Penanganan extends CI_Controller
                         'Kode' => $kode,
                         'Uraian' => $uraian,
                         'Catatan' => '',
-                        'Status' => 'Butuh Validasi'
+                        'link' => $link,
+                        'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
                     );
                 }
                 $this->Penanganan_model->update($id, $ArrUpdate);
@@ -136,7 +131,7 @@ class Penanganan extends CI_Controller
     }
 
     function upload_file(){
-        if($this->session->userdata('peringkat') != "guest"){
+        if($this->session->userdata('peringkat') == "guest"){
 			redirect(base_url("/dashboard"));
 		}
         
