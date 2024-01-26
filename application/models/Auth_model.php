@@ -25,4 +25,9 @@ class Auth_model extends CI_Model
 			$this->session->set_userdata($data_session);
 		return TRUE;
 	}
+
+	function show_data_user(){
+		$query = $this->db->select('user_id,username,peringkat')->get($this->_table);
+		return $query->result();
+	}
 }

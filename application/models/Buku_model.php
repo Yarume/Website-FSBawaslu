@@ -17,4 +17,7 @@ class Buku_model extends CI_Model
     {
         return $this->db->insert($this->_tables, $data);
     }
+    function count_data(){
+        return $this->db->where('Status','Valid')->from($this->_tables)->count_all_results();
+    }
 }

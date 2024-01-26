@@ -21,19 +21,32 @@
             <br>
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
+                  <tr>
+                      <th>No</th>
+                      <th>Username</th>
+                      <th>Role</th>
+                      <th>Action</th>
+                  </tr>      
+                </thead>
+                <tbody>
+                <?php
+                $no = 1;
+                foreach ($showdata as $data) : ?>
+                    <tr>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $data->username; ?></td>
+                        <td><?php echo $data->peringkat; ?></td>
+                        <td>ini action</td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+                <tfoot>
                 <tr>
-                    <th>Nama</th>
-                    <th>Username</th>
-                    <th>Role</th>
-                    <th>Action</th>
-                </tr>
-                
-                <tr>
-                    <th>Nama</th>
-                    <th>Username</th>
-                    <th>Role</th>
-                    <th>Action</th>
-                </tr>
+                      <th>No</th>
+                      <th>Username</th>
+                      <th>Role</th>
+                      <th>Action</th>
+                  </tr>   
                 </tfoot>
               </table>
             </div>

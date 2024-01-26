@@ -13,13 +13,14 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        
+                    <h3><?= $count_hukum; ?></h3>
                         <p>Hukum dan Penyelesaian Sengketa</p>
                     </div>
                     <div class="icon">
                         <i class="ion-android-checkbox-outline"></i>
                     </div>
-                    <a href="#" class="small-box-footer"></a>
+                    
+                    <a href="#" class="small-box-footer"><span>Show Data</a>
                 </div>
             </div>
             <!-- ./col -->
@@ -27,13 +28,13 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        
+                    <h3><?= $count_penanganan; ?></h3>
                         <p>Pencegahan PARMAS & HUMAS</p>
                     </div>
                     <div class="icon">
                         <i class="ion-android-remove-circle"></i>
                     </div>
-                    <a href="#" class="small-box-footer"></a>
+                    <a href="#" class="small-box-footer"><span>Show Data</a>
                 </div>
             </div>
             <!-- ./col -->
@@ -41,13 +42,13 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        
+                    <h3><?= $count_pencegahan; ?></h3>
                         <p>Penanganan Pelanggaran, Data dan Informasi</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer"></a>
+                    <a href="#" class="small-box-footer"><span>Show Data</a>
                 </div>
             </div>
             <!-- ./col -->
@@ -55,13 +56,13 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        
+                    <h3><?= $count_sdm; ?></h3>
                         <p>SDM, Organisasi, Pendidikan dan Pelatihan</p>
                     </div>
                     <div class="icon">
                         <i class="ion-ios-people"></i>
                     </div>
-                    <a href="#" class="small-box-footer"></a>
+                    <a href="#" class="small-box-footer"><span>Show Data</a>
                 </div>
             </div>
             <!-- ./col -->

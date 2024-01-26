@@ -25,6 +25,10 @@ class Dashboard extends CI_Controller
         $data['Sdm'] = $this->Sdm_model->getAllSdm();
 		$data['Buku'] = $this->Buku_model->show_all_data();
 		$data['Majalah'] = $this->Majalah_model->show_all_data();
+		$data['count_hukum'] = $this->Hukum_model->count_data();
+		$data['count_penanganan'] = $this->Penanganan_model->count_data();
+		$data['count_pencegahan'] = $this->Pencegahan_model->count_data();
+		$data['count_sdm'] = $this->Sdm_model->count_data();
 		$this->load->view('Internal/header');
         $this->load->view('Internal/dashboard',$data);
         $this->load->view('Internal/footer');

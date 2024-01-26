@@ -35,4 +35,7 @@ class Pencegahan_model extends CI_Model
     {
         return $this->db->delete($this->_tables, array("No" => $id));
     }
+    function count_data(){
+        return $this->db->where('Status','Valid')->from($this->_tables)->count_all_results();
+    }
 }
