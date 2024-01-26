@@ -5,20 +5,79 @@
       <h1>
         Home
       </h1>
-      
     </section>
+    <section class="content">
 
-<section class="content">
-    <div class="alert alert-warning  alert-dismissible">
+    <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        
+                        <p>Hukum dan Penyelesaian Sengketa</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion-android-checkbox-outline"></i>
+                    </div>
+                    <a href="#" class="small-box-footer"></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        
+                        <p>Pencegahan PARMAS & HUMAS</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion-android-remove-circle"></i>
+                    </div>
+                    <a href="#" class="small-box-footer"></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        
+                        <p>Penanganan Pelanggaran, Data dan Informasi</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="#" class="small-box-footer"></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        
+                        <p>SDM, Organisasi, Pendidikan dan Pelatihan</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion-ios-people"></i>
+                    </div>
+                    <a href="#" class="small-box-footer"></a>
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+
+    <!-- <div class="alert alert-warning  alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         SELAMAT DATANG <?= strtoupper($this->session->userdata('username')) ?>
         <p class="lead">DATABASE BADAN PENGAWAS PEMILIHAN UMUM PROVINSI BALI</p>
-    </div>
+    </div> -->
+    
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Seach Data</h3>
+              <h3 class="box-title">Search Data</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -27,7 +86,7 @@
                 <tr>
                   <th>No</th>
                   <th>Nama</th>
-                  <th>Devisi</th>
+                  <th>Divisi</th>
                   <th>Tahun</th>
                   <th>Action</th>
                 </tr>
@@ -85,6 +144,7 @@
                     </tr>
                 <?php endforeach ?>
 
+
                 <?php
                 foreach ($Buku as $data_h) : ?>
                     <tr>
@@ -115,7 +175,7 @@
                 <tr>
                 <th>No</th>
                   <th>Nama</th>
-                  <th>Devisi</th>
+                  <th>Divisi</th>
                   <th>Tahun</th>
                   <th>Action</th>
                 </tr>

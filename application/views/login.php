@@ -19,14 +19,48 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <style>
+    body {
+      background-color: #ecf0f5; /* Set background color */
+    }
+
+    .login-box {
+      width: 300px; /* Set the width of the login box */
+      margin: auto; /* Center the login box horizontally */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh; Set minimum height to 100% of the viewport height
+    }
+
+    .login-logo img {
+      width: 50%; /* Make the logo fill the container */
+      height: auto; /* Maintain the aspect ratio of the logo */
+      display: block; /* Remove extra space below the image */
+      margin: 0 auto 15px; /* Center the image and add some bottom margin */
+    }
+
+    .login-logo a {
+    font-size: 20px; /* Set the font size */
+    font-weight: bold; /* Make the text bold */
+    text-align: center;
+    display: block; /* Ensure the link is a block-level element */
+  }
+  </style>
+
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-  <div class="login-logo">
+  <!-- <div class="login-logo">
     <a href="/index2.html"><b>FILE</b>Sharing System</a>
-  </div>
+  </div> -->
   <!-- /.login-logo -->
   <div class="login-box-body">
+  <div class="login-logo">
+    <img src="assets/img/logobawaslu.png" alt="Logo">
+    <a>FILE SHARING SYSTEM BAWASLU PROVINSI BALI</a>
+    </div>
   <?php if($this->session->flashdata('message_login_error')): ?>
     <p class="login-box-msg">
         <?php
@@ -49,11 +83,6 @@
       </div>
       <div class="row">
         <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">

@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        SUPERADMIN - MENU
+        ADMIN - MENU
       </h1>
       
     </section>
