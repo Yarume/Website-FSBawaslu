@@ -36,7 +36,7 @@
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data->username; ?></td>
                         <td><?php echo $data->peringkat; ?></td>
-                        <td>ini action</td>
+                        <td><a href="'" class="btn btn btn-primary">Edit</a></td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>
