@@ -50,7 +50,7 @@ class Verifikasi extends CI_Controller
             if (empty($catatan)) {
                 $data['response'] = "ERROR, Alasan / Catatan harus dilengkapi";
             }else{
-                $this->hasil_verifikasi("Ditolak",$id,$devisi,$catatan);
+                $this->hasil_verifikasi("Revisi",$id,$devisi,$catatan);
 
             }
         } 

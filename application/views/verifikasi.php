@@ -43,8 +43,8 @@
                         <td><a href="<?php echo base_url('uploads/').$data_h->File; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
                         <td>Divisi - Hukum</td>
                         <td>
-                            <a href="<?php echo base_url('verifikasi/Valid/').$data_h->No; ?>/Hukum" rel="noopener noreferrer" class="btn btn btn-primary">Terima</a>
-                            <a href="<?php echo base_url('Catatan/').$data_h->No; ?>/Hukum" rel="noopener noreferrer" class="btn btn btn-danger">Tolak</a>
+                            <a href="<?php echo base_url('verifikasi/Valid/').$data_h->No; ?>/Hukum" rel="noopener noreferrer" class="btn btn btn-primary">Approve</a>
+                            <a href="<?php echo base_url('Catatan/').$data_h->No; ?>/Hukum" rel="noopener noreferrer" class="btn btn btn-warning">Revisi</a>
                     </td>
                     </tr>
                 <?php endforeach ?>
@@ -58,8 +58,8 @@
                         <td><a href="<?php echo base_url('uploads/').$data_h->File; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
                         <td>Divisi - Penanganan</td>
                         <td>
-                            <a href="<?php echo base_url('verifikasi/Valid/').$data_h->No; ?>/Penanganan" rel="noopener noreferrer" class="btn btn btn-primary">Terima</a>
-                            <a href="<?php echo base_url('Catatan/').$data_h->No; ?>/Penanganan" rel="noopener noreferrer" class="btn btn btn-danger">Tolak</a>
+                            <a href="<?php echo base_url('verifikasi/Valid/').$data_h->No; ?>/Penanganan" rel="noopener noreferrer" class="btn btn btn-primary">Approve</a>
+                            <a href="<?php echo base_url('Catatan/').$data_h->No; ?>/Penanganan" rel="noopener noreferrer" class="btn btn btn-warning">Revisi</a>
                     </td>
                     </tr>
                 <?php endforeach ?>
@@ -73,8 +73,8 @@
                         <td><a href="<?php echo base_url('uploads/').$data_h->File; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
                         <td>Divisi - Pencegahan</td>
                         <td>
-                            <a href="<?php echo base_url('verifikasi/Valid/').$data_h->No; ?>/Pencegahan" rel="noopener noreferrer" class="btn btn btn-primary">Terima</a>
-                            <a href="<?php echo base_url('Catatan/').$data_h->No; ?>/Pencegahan" rel="noopener noreferrer" class="btn btn btn-danger">Tolak</a>
+                            <a href="<?php echo base_url('verifikasi/Valid/').$data_h->No; ?>/Pencegahan" rel="noopener noreferrer" class="btn btn btn-primary">Approve</a>
+                            <a href="<?php echo base_url('Catatan/').$data_h->No; ?>/Pencegahan" rel="noopener noreferrer" class="btn btn btn-warning">Revisi</a>
                     </td>
                     </tr>
                 <?php endforeach ?>
@@ -88,8 +88,8 @@
                         <td><a href="<?php echo base_url('uploads/').$data_h->File; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
                         <td>Divisi - Sdm</td>
                         <td>
-                            <a href="<?php echo base_url('verifikasi/Valid/').$data_h->No; ?>/Sdm" rel="noopener noreferrer" class="btn btn btn-primary">Terima</a>
-                            <a href="<?php echo base_url('Catatan/').$data_h->No; ?>/Sdm" rel="noopener noreferrer" class="btn btn btn-danger">Tolak</a>
+                            <a href="<?php echo base_url('verifikasi/Valid/').$data_h->No; ?>/Sdm" rel="noopener noreferrer" class="btn btn btn-primary">Approve</a>
+                            <a href="<?php echo base_url('Catatan/').$data_h->No; ?>/Sdm" rel="noopener noreferrer" class="btn btn btn-warning">Revisi</a>
                     </td>
                     </tr>
                 <?php endforeach ?>

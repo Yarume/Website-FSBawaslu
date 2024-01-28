@@ -33,4 +33,15 @@ class Dashboard extends CI_Controller
         $this->load->view('Internal/dashboard',$data);
         $this->load->view('Internal/footer');
 	}
+
+	function flip_book(){
+		$url = $_GET['url'];
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	 	$data = curl_exec($ch);
+	 	curl_close($ch);
+	 	$data1 = "base64,".base64_encode($data);
+		echo $data1;
+	}
 }

@@ -122,7 +122,7 @@ class Tamanpustaka extends CI_Controller
 		}
         
         $config['upload_path'] = 'uploads/'.$type.'/'; 
-        $config['allowed_types'] = 'pdf|jpg|jpeg|png'; 
+        $config['allowed_types'] = 'pdf'; 
         $config['max_size'] = '5000'; // max_size in kb 
         $config['file_name'] = $_FILES['file']['name']; 
 

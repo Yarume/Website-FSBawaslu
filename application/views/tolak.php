@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>File Sharing System | TOLAK CATATAN </title>
+  <title>File Sharing System | Revisi Catatan </title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -23,7 +23,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href=""><b>Tolak Verifikasi Data</a>
+    <a href=""><b>Revisi Verifikasi Data</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -52,7 +52,7 @@
             <input type="text" class="form-control" id="catatan" name="catatan">
         </div>
         <div class="submit">
-            <input type='submit' value='tolak' name='tolak' />
+            <input type='submit' class="btn btn-primary btn-block" value='Revisi' name='tolak' />
         </div>
     </form>
     <!-- /.social-auth-links -->

@@ -64,8 +64,8 @@
                                     echo '<td><span class="label bg-yellow">Butuh Validasi</span></td>';
                                 break;
 
-                                case 'Ditolak':
-                                    echo '<td><span class="label bg-red">Ditolak</span></td>';
+                                case 'Revisi':
+                                    echo '<td><span class="label bg-red">Revisi</span></td>';
                                 break;
                             }
                         }   
