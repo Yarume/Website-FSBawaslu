@@ -23,7 +23,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href=""><b>Manage User Data</a>
+    <a href=""><b>Tambah User Data</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -39,15 +39,15 @@
     <form method='post' action=''>
         <div class="form-group">
             <label for="kode">Username</label>
-            <input type="text" class="form-control" value="<?= $validate[0] ? $validate[0]->username : ''; ?>" name="username" id="username">
+            <input type="text" class="form-control" value="" name="username" id="username" placeholder="Masukan Username">
         </div>
         <div class="form-group">
             <label for="uraian">Password</label>
-            <input type="text" class="form-control" value="<?= $validate[0] ? $validate[0]->password : ''; ?>" name="password" id="password">
+            <input type="text" class="form-control" value="" name="password" id="password" placeholder="Masukan Password">
         </div>
         <div class="form-group">
             <label for="uraian">Verification Code</label>
-            <input type="text" class="form-control" value="<?= $validate[0] ? $validate[0]->Verification_Code : ''; ?>" name="verif_code" id="verif_code">
+            <input type="text" class="form-control" value="" name="verif_code" id="verif_code" placeholder="Masukan Verification Code">
         </div>
         <div class="form-group">
             <label for="uraian">Peringkat</label>
@@ -55,11 +55,7 @@
               <?php
               $list = array('admin','staff','kabag');
                 for ($i=0; $i < count($list); $i++) { 
-                  if ($list[$i] == $validate[0]->peringkat) {
-                    echo '<option value="'.$list[$i].'" selected>'.$list[$i].'</option>';
-                  }else{
                     echo '<option value="'.$list[$i].'">'.$list[$i].'</option>';
-                  }
                 }
               ?>
             </select>

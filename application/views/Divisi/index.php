@@ -15,7 +15,7 @@
           <div class="box-header with-border">
               <h3 class="box-title"><?= $title; ?></h3>
               <?php
-                if ($this->session->userdata('peringkat') != 'guest') {
+                if ($this->session->userdata('peringkat') != 'staff') {
                     echo '<a href="'.base_url($divisi).'/upload_data" class="btn btn-primary">Upload Data</a>';
                 }
             ?>
@@ -34,7 +34,7 @@
                     <th>File</th>
                     <th>Link</th>
                     <?php
-                    if ($this->session->userdata('peringkat') != 'guest') {
+                    if ($this->session->userdata('peringkat') != 'staff') {
                         echo '<th>Status</th>
                         <th>Aksi</th>';
                     }
@@ -54,7 +54,7 @@
                         <td><a href="<?php echo base_url('uploads/').$data->File; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
                         <td><a href="<?php echo $data->link; ?>" target="_blank" rel="noopener noreferrer">Link</a></td>
                         <?php 
-                        if ($this->session->userdata('peringkat') != 'guest') {
+                        if ($this->session->userdata('peringkat') != 'staff') {
                             switch ($data->Status) {
                                 case 'Valid':
                                     echo '<td><span class="label bg-green">Approved</span></td>';
@@ -72,7 +72,7 @@
                         ?>
                     
                         <?php
-                        if ($this->session->userdata('peringkat') != 'guest') {
+                        if ($this->session->userdata('peringkat') != 'staff') {
                             echo '<td><a href="'.base_url($divisi."/edit_data/").$data->No.'" class="btn btn btn-primary">Edit</a>
                             <button onclick="validate('.$data->No.')" class="btn btn btn-danger">Delete</button>
                         </td>';
@@ -91,7 +91,7 @@
                     <th>File</th>
                     <th>Link</th>
                     <?php
-                    if ($this->session->userdata('peringkat') != 'guest') {
+                    if ($this->session->userdata('peringkat') != 'staff') {
                         echo '<th>Status</th>
                         <th>Aksi</th>';
                     }

@@ -38,7 +38,7 @@ class Tamanpustaka extends CI_Controller
 
     public function uploadbuku()
     {
-        if($this->session->userdata('peringkat') == "guest"){
+        if($this->session->userdata('peringkat') == "staff"){
 			redirect(base_url("/dashboard"));
 		}
         if ($this->input->post('upload')) {
@@ -78,7 +78,7 @@ class Tamanpustaka extends CI_Controller
 
     public function uploadmajalah()
     {
-        if($this->session->userdata('peringkat') == "guest"){
+        if($this->session->userdata('peringkat') == "staff"){
 			redirect(base_url("/dashboard"));
 		}
         if ($this->input->post('upload')) {
@@ -117,7 +117,7 @@ class Tamanpustaka extends CI_Controller
     
    
     function upload_file($type){
-        if($this->session->userdata('peringkat') == "guest"){
+        if($this->session->userdata('peringkat') == "staff"){
 			redirect(base_url("/dashboard"));
 		}
         

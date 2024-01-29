@@ -4,7 +4,7 @@ class Man_user extends CI_Controller
 {
     function __construct(){
 		parent::__construct();
-        if($this->session->userdata('status') != "login" || $this->session->userdata('peringkat') != "superadmin"){
+        if($this->session->userdata('status') != "login" || $this->session->userdata('peringkat') != "admin"){
 			redirect(base_url("/"));
 		}
 		$this->load->model('Auth_model');

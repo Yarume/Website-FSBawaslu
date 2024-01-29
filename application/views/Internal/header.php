@@ -137,7 +137,7 @@
         
 
         <?php
-          if ($this->session->userdata('peringkat') == 'superadmin') {
+          if ($this->session->userdata('peringkat') == 'admin') {
               echo '
               <li class="header">SUPER-ADMIN</li>
               <li><a href="'.base_url().'man_user"><i class="fa fa-users"></i> <span>Management User</span></a></li>

@@ -5,10 +5,10 @@
     <h1>
     TAMAN PUSTAKA - Majalah
     <?php
-              if ($this->session->userdata('peringkat') != 'guest') {
-                  echo '<a href="'.base_url().'tamanpustaka/uploadmajalah" class="btn btn-primary">Upload Data</a>';
-              }
-            ?>
+      if ($this->session->userdata('peringkat') != 'staff') {
+          echo '<a href="'.base_url().'tamanpustaka/uploadmajalah" class="btn btn-primary">Upload Data</a>';
+      }
+    ?>
     
     </h1>
     

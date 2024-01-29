@@ -26,8 +26,42 @@ class Auth_model extends CI_Model
 		return TRUE;
 	}
 
+	function valdas_code($id){
+		$query = $this->db->select('username,password,Verification_Code')->where('Verification_Code',$id)->get($this->_table);
+        return $query->result();
+	}
+
 	function show_data_user(){
-		$query = $this->db->select('user_id,username,peringkat')->get($this->_table);
+		$query = $this->db->select('user_id,username,peringkat,Verification_Code')->get($this->_table);
 		return $query->result();
 	}
+	
+	function cek_id($id){
+		$query = $this->db->select('user_id,username,password,peringkat,Verification_Code')->where('user_id',$id)->get($this->_table);
+        return $query->result();
+	}
+
+	function insert($data)
+    {
+        return $this->db->insert($this->_table, $data);
+    }
+
+    function update($id,$data)
+    {
+        $this->db->where('user_id', $id);
+        return $this->db->update($this->_table, $data);
+    }
+
+	function recover($id,$data)
+    {
+        $this->db->where('Verification_Code', $id);
+        return $this->db->update($this->_table, $data);
+    }
+    function delete($id)
+    {
+        return $this->db->delete($this->_table, array("user_id" => $id));
+    }
+
+	
+
 }

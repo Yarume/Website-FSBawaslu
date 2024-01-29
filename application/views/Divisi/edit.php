@@ -36,7 +36,7 @@
                     <input type="text" class="form-control" value="<?= $dataedit->catatan ?>" disabled>
                 </div>
                 <?php
-                if($this->session->userdata('peringkat') != "guest"){
+                if($this->session->userdata('peringkat') != "staff"){
                     echo ' <div class="form-group">
                     <label for="file">File</label>
                     <input type="file" class="form-control-file" name="file">

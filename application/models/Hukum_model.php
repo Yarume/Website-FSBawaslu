@@ -31,7 +31,6 @@ class Hukum_model extends CI_Model
         $this->db->where('No', $id);
         return $this->db->update($this->_tables, $data);
     }
-
     function delete($id)
     {
         return $this->db->delete($this->_tables, array("No" => $id));

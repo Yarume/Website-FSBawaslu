@@ -12,9 +12,11 @@
         <div class="col-xs-12">
           <div class="box">
           <div class="box-header with-border">
-                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-user">
-                       Tambah User
-                   </button>
+          <?php
+                if ($this->session->userdata('peringkat') != 'staff') {
+                    echo '<a href="'.base_url().'Tambah_User" class="btn btn-primary">Tambah User</a>';
+                }
+            ?>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -36,7 +38,7 @@
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data->username; ?></td>
                         <td><?php echo $data->peringkat; ?></td>
-                        <td><a href="'" class="btn btn btn-primary">Edit</a></td>
+                        <td><a href="<?= base_url(); ?>Edit_User/<?php echo $data->user_id; ?>" class="btn btn btn-primary">Edit</a></td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>

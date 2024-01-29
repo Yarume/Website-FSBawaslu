@@ -27,7 +27,7 @@ class Pencegahan extends CI_Controller
 
     public function upload_data()
     {
-        if($this->session->userdata('peringkat') == "guest"){
+        if($this->session->userdata('peringkat') == "staff"){
 			redirect(base_url("/dashboard"));
 		}
         if ($this->input->post('upload')) {
@@ -39,7 +39,7 @@ class Pencegahan extends CI_Controller
             $uraian = $this->input->post('uraian');
             $link = $this->input->post('link');
 
-            $suadmin = ($this->session->userdata('peringkat') == "superadmin");
+            $suadmin = ($this->session->userdata('peringkat') == "admin");
 
             if (empty($kode) && empty($uraian)) {
                 $data['response'] = 'Gagal!, kolom kode dan uraian kosong';
@@ -70,7 +70,7 @@ class Pencegahan extends CI_Controller
     }
 
     public function edit_data($id){
-        if($this->session->userdata('peringkat') == "guest"){
+        if($this->session->userdata('peringkat') == "staff"){
 			redirect(base_url("/dashboard"));
 		}
         $validasi = $this->Pencegahan_model->get_where($id);
@@ -83,7 +83,7 @@ class Pencegahan extends CI_Controller
                 $kode = $this->input->post('kode');
                 $uraian = $this->input->post('uraian');
                 $link = $this->input->post('link');
-                $suadmin = ($this->session->userdata('peringkat') == "superadmin");
+                $suadmin = ($this->session->userdata('peringkat') == "admin");
                 if (!empty($_FILES['file']['name'])) {
                     $filenem = $this->upload_file();
                     $ArrUpdate = array(
@@ -133,7 +133,7 @@ class Pencegahan extends CI_Controller
     }
 
     function upload_file(){
-        if($this->session->userdata('peringkat') == "guest"){
+        if($this->session->userdata('peringkat') == "staff"){
 			redirect(base_url("/dashboard"));
 		}
         

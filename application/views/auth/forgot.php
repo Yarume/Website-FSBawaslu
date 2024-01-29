@@ -23,7 +23,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href=""><b>Manage User Data</a>
+    <a href=""><b>Forgot Password</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -34,12 +34,11 @@
         ?>
     </p>
     <?php endif ?>
-    <?php
-    ?>
+
     <form method='post' action=''>
         <div class="form-group">
             <label for="kode">Username</label>
-            <input type="text" class="form-control" value="<?= $validate[0] ? $validate[0]->username : ''; ?>" name="username" id="username">
+            <input type="text" class="form-control" value="<?= $validate[0] ? $validate[0]->username : ''; ?>" name="username" id="username" disabled>
         </div>
         <div class="form-group">
             <label for="uraian">Password</label>
@@ -47,25 +46,10 @@
         </div>
         <div class="form-group">
             <label for="uraian">Verification Code</label>
-            <input type="text" class="form-control" value="<?= $validate[0] ? $validate[0]->Verification_Code : ''; ?>" name="verif_code" id="verif_code">
-        </div>
-        <div class="form-group">
-            <label for="uraian">Peringkat</label>
-            <select name="peringkat" id="peringkat" class="form-control">
-              <?php
-              $list = array('admin','staff','kabag');
-                for ($i=0; $i < count($list); $i++) { 
-                  if ($list[$i] == $validate[0]->peringkat) {
-                    echo '<option value="'.$list[$i].'" selected>'.$list[$i].'</option>';
-                  }else{
-                    echo '<option value="'.$list[$i].'">'.$list[$i].'</option>';
-                  }
-                }
-              ?>
-            </select>
+            <input type="text" class="form-control" value="<?= $validate[0] ? $validate[0]->Verification_Code : ''; ?>" name="verfcode" id="verfcode" readonly />
         </div>
         <div class="submit">
-            <input type='submit' class="btn btn-primary btn-block" value='Submit' name='submit' />
+            <input type='submit' class="btn btn-primary btn-block" value='forgot' name='forgot' />
         </div>
     </form>
     <!-- /.social-auth-links -->

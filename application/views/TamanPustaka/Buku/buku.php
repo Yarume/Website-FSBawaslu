@@ -6,7 +6,7 @@
     <section class="content-header">
       <h1>
       TAMAN PUSTAKA - Buku <?php
-    if ($this->session->userdata('peringkat') != 'guest') {
+    if ($this->session->userdata('peringkat') != 'staff') {
         echo '<a href="'.base_url().'tamanpustaka/uploadbuku" class="btn btn-primary">Upload Data</a>';
     }
 ?>

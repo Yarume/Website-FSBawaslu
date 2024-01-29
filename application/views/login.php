@@ -75,7 +75,6 @@
       <div class="form-group has-feedback">
         <input type="text" name="username" class="form-control" id="inputUsername" placeholder="Masukkan Username...">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        
       </div>
       <div class="form-group has-feedback">
         <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Masukkan Pasword...">
@@ -90,12 +89,47 @@
         </div>
         <!-- /.col -->
       </div>
+      <div class="social-auth-links text-center">
+<p>- OR -</p>
+<div class="box-body">
+  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-default" data-keyboard="false" data-backdrop="static">
+  Forgot Password
+  </button>
+
     </form>
     <!-- /.social-auth-links -->
   </div>
   <!-- /.login-box-body -->
+  
+<div class="modal fade" id="modal-default">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Forgot Password</h4>
+          </div>
+          <div class="modal-body">
+            
+          <div class="form-group has-feedback">
+          <form action='activation' method="post">
+            <label for="exampleInputEmail1">Verification Code</label>
+            <input type="text" name="verif_code" class="form-control" id="verif_code" placeholder="Masukkan Verification Code">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          </div>
+
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <input type="submit" name="Forgot" class="btn btn-primary" value="Save changes">
+        </form>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 <!-- /.login-box -->
+
 
 <!-- jQuery 3 -->
 <script src="<?= base_url(); ?>bower_components/jquery/dist/jquery.min.js"></script>
