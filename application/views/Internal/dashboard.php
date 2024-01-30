@@ -88,6 +88,7 @@
                   <th>No</th>
                   <th>Nama</th>
                   <th>Divisi</th>
+                  <th>Taman Pustaka</th>
                   <th>Tahun</th>
                   <th>Action</th>
                 </tr>
@@ -100,6 +101,7 @@
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
                         <td>Divisi - Hukum</td>
+                        <td></td>
                         <td><?php echo date('Y', strtotime($data_h->Tanggal));?></td>
                         <td>
                             <a href="<?php echo base_url('hukum') ?>" rel="noopener noreferrer" class="btn btn btn-primary">View</a>
@@ -112,9 +114,10 @@
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
                         <td>Divisi - Penanganan</td>
+                        <td></td>
                         <td><?php echo date('Y', strtotime($data_h->Tanggal));?></td>
                         <td>
-                            <a href="<?php echo base_url('hukum') ?>" rel="noopener noreferrer" class="btn btn btn-primary">View</a>
+                            <a href="<?php echo base_url('penanganan') ?>" rel="noopener noreferrer" class="btn btn btn-primary">View</a>
                     </td>
                     </tr>
                 <?php endforeach ?>
@@ -125,9 +128,10 @@
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
                         <td>Divisi - Pencegahan</td>
+                        <td></td>
                         <td><?php echo date('Y', strtotime($data_h->Tanggal));?></td>
                         <td>
-                            <a href="<?php echo base_url('hukum') ?>" rel="noopener noreferrer" class="btn btn btn-primary">View</a>
+                            <a href="<?php echo base_url('pencegahan') ?>" rel="noopener noreferrer" class="btn btn btn-primary">View</a>
                     </td>
                     </tr>
                 <?php endforeach ?>
@@ -138,6 +142,7 @@
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
                         <td>Divisi - SDM</td>
+                        <td></td>
                         <td><?php echo date('Y', strtotime($data_h->Tanggal));?></td>
                         <td>
                             <a href="<?php echo base_url('hukum') ?>" rel="noopener noreferrer" class="btn btn btn-primary">View</a>
@@ -151,10 +156,11 @@
                     <tr>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data_h->nama; ?></td>
+                        <td></td>
                         <td>Buku</td>
                         <td><?php echo date('Y', strtotime($data_h->tanggal));?></td>
                         <td>
-                            <a href="<?php echo base_url('hukum') ?>" rel="noopener noreferrer" class="btn btn btn-primary">View</a>
+                            <a href="<?php echo base_url('tamanpustaka/buku') ?>" rel="noopener noreferrer" class="btn btn btn-primary">View</a>
                     </td>
                     </tr>
                 <?php endforeach ?>
@@ -164,10 +170,11 @@
                     <tr>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data_h->nama; ?></td>
+                        <td></td>
                         <td>Majalah</td>
                         <td><?php echo date('Y', strtotime($data_h->tanggal));?></td>
                         <td>
-                            <a href="<?php echo base_url('hukum') ?>" rel="noopener noreferrer" class="btn btn btn-primary">View</a>
+                            <a href="<?php echo base_url('tamanpustaka/majalah') ?>" rel="noopener noreferrer" class="btn btn btn-primary">View</a>
                     </td>
                     </tr>
                 <?php endforeach ?>
