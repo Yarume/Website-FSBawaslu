@@ -38,7 +38,7 @@
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data->username; ?></td>
                         <td><?php echo $data->peringkat; ?></td>
-                        <td><a href="<?= base_url(); ?>Edit_User/<?php echo $data->user_id; ?>" class="btn btn btn-primary">Edit</a></td>
+                        <td><a href="<?= base_url(); ?>Edit_User/<?php echo $data->user_id; ?>" class="btn btn btn-warning">Edit</a> || <button onclick="validate(<?php echo $data->user_id; ?>)" class="btn btn btn-danger">Delete</button></td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>
@@ -62,4 +62,12 @@
     </section>
     <!-- /.content -->
   </div>
+  <script>
+        function validate(id) {
+            var valid = confirm("Kamu Yakin ingin Menghapus data ini ?");
+            if (valid) {
+                window.location = '<?= base_url(); ?>Delete_User/'+id;
+            }
+        }
+    </script>
   
