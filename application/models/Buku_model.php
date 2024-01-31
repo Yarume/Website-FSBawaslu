@@ -20,4 +20,9 @@ class Buku_model extends CI_Model
     function count_data(){
         return $this->db->where('Status','Valid')->from($this->_tables)->count_all_results();
     }
+    function delete($id)
+    {
+        return $this->db->delete($this->_tables, array("id" => $id));
+    }
+
 }

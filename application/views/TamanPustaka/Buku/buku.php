@@ -44,6 +44,13 @@ foreach ($raw_data as $data) : ?>
       </ul>
       <a class="_df_custom btn btn-primary btn-block" href="#" source="<?= base_url(); ?>uploads/<?php echo $data->file; ?>">View File</a>
       <a href="<?php echo base_url('uploads/').$data->file; ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">Download File</a>
+      <?php
+      if ($this->session->userdata('peringkat') == 'admin') {
+          echo '
+          <button onclick="validate('.$data->id.')" class="btn btn btn-danger btn-block">Delete File</button>
+      </td>';
+      }
+      ?>
     </div>
   </div>
 </div>
@@ -59,3 +66,11 @@ foreach ($raw_data as $data) : ?>
 
 <script src="<?= base_url(); ?>assets/js/jquery.min.js" type="text/javascript"></script>
 <script src="<?= base_url(); ?>assets/js/dflip.min.js" type="text/javascript"></script>
+<script>
+        function validate(id) {
+            var valid = confirm("Kamu Yakin ingin Menghapus data ini ?");
+            if (valid) {
+                window.location = '<?= base_url(); ?>/Delete_TamanPustaka/Buku/'+id;
+            }
+        }
+    </script>

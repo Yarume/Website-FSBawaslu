@@ -17,4 +17,8 @@ class Majalah_model extends CI_Model
     {
         return $this->db->insert($this->_tables, $data);
     }
+    function delete($id)
+    {
+        return $this->db->delete($this->_tables, array("id" => $id));
+    }
 }

@@ -21,3 +21,5 @@ $route['Tambah_User'] = 'Auth/tambah_data';
 $route['Edit_User/(:any)'] = 'Auth/edit_data/$1';
 $route['activation'] = 'Auth/reset_password/$1';
 $route['Delete_User/(:any)'] = 'Auth/delete_data/$1';
+
+$route['Delete_TamanPustaka/(:any)/(:any)'] = 'TamanPustaka/delete_data/$1/$2';

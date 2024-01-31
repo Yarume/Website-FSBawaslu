@@ -78,6 +78,9 @@ class Hukum extends CI_Controller
         }
     }
     public function delete_data($id){
+        if($this->session->userdata('peringkat') != "admin"){
+			redirect(base_url("/dashboard"));
+		}
         $validasi = $this->Hukum_model->get_where($id);
         if (!empty($validasi)) {
             $this->Hukum_model->delete($id);

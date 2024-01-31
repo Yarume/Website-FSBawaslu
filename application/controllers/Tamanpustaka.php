@@ -134,6 +134,32 @@ class Tamanpustaka extends CI_Controller
         }else{ 
             return FALSE;
         } 
-                
+    }
+
+    public function delete_data($type,$id){
+
+        if($this->session->userdata('peringkat') != "admin"){
+			redirect(base_url("/dashboard"));
+		}
+
+        if ($type === "Majalah") {
+            $validasi = $this->Majalah_model->get_where($id);
+            if (!empty($validasi)) {
+                $this->Majalah_model->delete($id);
+                redirect(base_url('tamanpustaka/majalah'));
+            }else{
+                echo "data tidak ada";
+            }
+
+        }else if ($type === "Buku") {
+            $validasi = $this->Buku_model->get_where($id);
+            if (!empty($validasi)) {
+                $this->Buku_model->delete($id);
+                redirect(base_url('tamanpustaka/buku'));
+            }else{
+                echo "data tidak ada";
+            }
+        }
+        echo" ya";
     }
 }

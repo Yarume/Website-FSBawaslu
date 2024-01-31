@@ -121,6 +121,9 @@ class Penanganan extends CI_Controller
         }
     }
     public function delete_data($id){
+        if($this->session->userdata('peringkat') != "admin"){
+			redirect(base_url("/dashboard"));
+		}
         $validasi = $this->Penanganan_model->get_where($id);
         if (!empty($validasi)) {
             $this->Penanganan_model->delete($id);
