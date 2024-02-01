@@ -90,7 +90,7 @@
         <!-- /.col -->
       </div>
       <div class="social-auth-links text-center">
-<p>- OR -</p>
+<p></p>
 <div class="box-body">
   <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-default" data-keyboard="false" data-backdrop="static">
   Forgot Password

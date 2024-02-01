@@ -20,21 +20,7 @@
                         <i class="ion-android-checkbox-outline"></i>
                     </div>
                     
-                    <a href="#" class="small-box-footer"><span>Show Data</a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-green">
-                    <div class="inner">
-                    <h3><?= $count_penanganan; ?></h3>
-                        <p>Pencegahan PARMAS & HUMAS</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion-android-remove-circle"></i>
-                    </div>
-                    <a href="#" class="small-box-footer"><span>Show Data</a>
+                    <a href="#" class="small-box-footer"><span></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -43,12 +29,26 @@
                 <div class="small-box bg-yellow">
                     <div class="inner">
                     <h3><?= $count_pencegahan; ?></h3>
-                        <p>Penanganan Pelanggaran, Data dan Informasi</p>
+                        <p>Pencegahan PARMAS & HUMAS</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer"><span>Show Data</a>
+                    <a href="#" class="small-box-footer"><span></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                    <h3><?= $count_penanganan; ?></h3>
+                        <p>Penanganan Pelanggaran, Data dan Informasi</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion-android-remove-circle"></i>
+                    </div>
+                    <a href="#" class="small-box-footer"><span></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -62,7 +62,7 @@
                     <div class="icon">
                         <i class="ion-ios-people"></i>
                     </div>
-                    <a href="#" class="small-box-footer"><span>Show Data</a>
+                    <a href="#" class="small-box-footer"><span></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -108,6 +108,21 @@
                     </td>
                     </tr>
                 <?php endforeach ?>
+                
+                <?php
+                foreach ($Pencegahan as $data_h) : ?>
+                    <tr>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $data_h->Uraian; ?></td>
+                        <td>Divisi - Pencegahan</td>
+                        <td></td>
+                        <td><?php echo date('Y', strtotime($data_h->Tanggal));?></td>
+                        <td>
+                            <a href="<?php echo base_url('pencegahan') ?>" rel="noopener noreferrer" class="btn btn btn-primary">View</a>
+                    </td>
+                    </tr>
+                <?php endforeach ?>
+
                 <?php
                 foreach ($Penanganan as $data_h) : ?>
                     <tr>
@@ -122,19 +137,6 @@
                     </tr>
                 <?php endforeach ?>
 
-                <?php
-                foreach ($Pencegahan as $data_h) : ?>
-                    <tr>
-                        <td><?php echo $no++; ?></td>
-                        <td><?php echo $data_h->Uraian; ?></td>
-                        <td>Divisi - Pencegahan</td>
-                        <td></td>
-                        <td><?php echo date('Y', strtotime($data_h->Tanggal));?></td>
-                        <td>
-                            <a href="<?php echo base_url('pencegahan') ?>" rel="noopener noreferrer" class="btn btn btn-primary">View</a>
-                    </td>
-                    </tr>
-                <?php endforeach ?>
 
                 <?php
                 foreach ($Sdm as $data_h) : ?>

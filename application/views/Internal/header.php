@@ -70,7 +70,7 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?= base_url(); ?>assets/img/logobwsl01.png" class="img-circle" alt="User Image">
+                <img src="<?= base_url(); ?>assets/img/logobawaslu2.png" class="img-circle" alt="User Image">
                 <p>
                   <?= strtoupper($this->session->userdata('username')) ?> - <?= strtoupper($this->session->userdata('peringkat')) ?>
                 </p>
@@ -93,7 +93,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?= base_url(); ?>assets/img/logobwsl01.png" class="img-circle" alt="User Image">
+          <img src="<?= base_url(); ?>assets/img/logobawaslu2.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?= strtoupper($this->session->userdata('username')) ?></p>
@@ -102,7 +102,7 @@
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">ADMINISTRATOR</li>
+        <li class="header">MAIN-MENU</li>
         <li><a href="/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li class="treeview">
           <a href="#">
@@ -139,7 +139,7 @@
         <?php
           if ($this->session->userdata('peringkat') == 'admin') {
               echo '
-              <li class="header">SUPER-ADMIN</li>
+              <li class="header">ADMIN</li>
               <li><a href="'.base_url().'man_user"><i class="fa fa-users"></i> <span>Management User</span></a></li>
               <li><a href="'.base_url().'verifikasi"><i class="fa fa-check"></i> <span>Verifikasi</span></a></li>
               ';
