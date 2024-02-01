@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+
+use PHPMailer\PHPMailer\PHPMailer; 
+use PHPMailer\PHPMailer\SMTP; 
+use PHPMailer\PHPMailer\Exception; 
+
 class Auth extends CI_Controller
 {
 	function __construct(){
@@ -117,5 +122,39 @@ class Auth extends CI_Controller
 		redirect(base_url('/'));
 	}
 
+	function send_mail(){		
+		require 'plugins/PHPMailer/Exception.php'; 
+		require 'plugins/PHPMailer/PHPMailer.php'; 
+		require 'plugins/PHPMailer/SMTP.php'; 
+		
+		$mail = new PHPMailer; 
+		
+		$mail->isSMTP();                                    // Set mailer to use SMTP 
+		$mail->Host = 'mail.dhome.id';             // Specify main and backup SMTP servers 
+		$mail->SMTPAuth = true;                             // Enable SMTP authentication 
+		$mail->Username = 'mail@dhome.id';         // SMTP username 
+		$mail->Password = 'Ujku.AaQr^]Y';                        // SMTP password 
+		$mail->SMTPSecure = 'ssl';                          // Enable TLS encryption, `ssl` also accepted 
+		$mail->Port = 465;                                  // TCP port to connect to 
+		
+		$mail->setFrom('mail@bawaslubali.ac.id', 'Bawaslu Bali'); 
+		$mail->addAddress('yarumeshina@gmail.com'); 
+		$mail->isHTML(true); 
+		
+		// Mail subject 
+		$mail->Subject = 'Recovery Password'; 
+		
+		// Mail body content 
+		$bodyContent = '<h1>Berikut Merupakan kode / Link untuk verifikasi Kode</h1>'; 
+		$bodyContent .= '<p>Ambibu</p>'; 
+		$mail->Body    = $bodyContent; 
+		
+		// Send email 
+		if(!$mail->send()) { 
+			echo 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo; 
+		} else { 
+			echo 'Message has been sent.'; 
+		}
+	}
 
 }

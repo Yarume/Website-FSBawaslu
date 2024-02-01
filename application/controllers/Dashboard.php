@@ -1,5 +1,6 @@
 <?php
 
+
 class Dashboard extends CI_Controller
 {
     function __construct(){
@@ -44,4 +45,14 @@ class Dashboard extends CI_Controller
 	 	$data1 = "base64,".base64_encode($data);
 		echo $data1;
 	}
+	function generateRandomString() {
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < 50; $i++) {
+			$randomString .= $characters[random_int(0, $charactersLength - 1)];
+		}
+		echo $randomString;
+	}
+	
 }
