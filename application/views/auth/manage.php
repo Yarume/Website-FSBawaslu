@@ -50,6 +50,10 @@
             <input type="text" class="form-control" value="<?= $validate[0] ? $validate[0]->Verification_Code : ''; ?>" name="verif_code" id="verif_code">
         </div>
         <div class="form-group">
+            <label for="uraian">Email</label>
+            <input type="email" class="form-control" value="<?= $validate[0] ? $validate[0]->email : ''; ?>" name="email" id="email">
+        </div>
+        <div class="form-group">
             <label for="uraian">Peringkat</label>
             <select name="peringkat" id="peringkat" class="form-control">
               <?php

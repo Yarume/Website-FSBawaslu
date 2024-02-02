@@ -32,12 +32,12 @@ class Auth_model extends CI_Model
 	}
 
 	function show_data_user(){
-		$query = $this->db->select('user_id,username,peringkat,Verification_Code')->get($this->_table);
+		$query = $this->db->select('user_id,username,peringkat,Verification_Code,email')->get($this->_table);
 		return $query->result();
 	}
 	
 	function cek_id($id){
-		$query = $this->db->select('user_id,username,password,peringkat,Verification_Code')->where('user_id',$id)->get($this->_table);
+		$query = $this->db->select('user_id,username,password,peringkat,Verification_Code,email')->where('user_id',$id)->get($this->_table);
         return $query->result();
 	}
 
@@ -57,10 +57,20 @@ class Auth_model extends CI_Model
         $this->db->where('Verification_Code', $id);
         return $this->db->update($this->_table, $data);
     }
+	function reset_verf($id,$data)
+    {
+        $this->db->where('email', $id);
+        return $this->db->update($this->_table, $data);
+    }
     function delete($id)
     {
         return $this->db->delete($this->_table, array("user_id" => $id));
     }
+
+	function check_email($email){
+		$query = $this->db->select('email')->where('email',$email)->get($this->_table);
+        return $query->result();
+	}
 
 	
 

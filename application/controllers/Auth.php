@@ -1,10 +1,14 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-
 use PHPMailer\PHPMailer\PHPMailer; 
 use PHPMailer\PHPMailer\SMTP; 
 use PHPMailer\PHPMailer\Exception; 
+ 
+// Include library files 
+require 'plugins/PHPMailer/Exception.php'; 
+require 'plugins/PHPMailer/PHPMailer.php'; 
+require 'plugins/PHPMailer/SMTP.php'; 
 
 class Auth extends CI_Controller
 {
@@ -41,6 +45,7 @@ class Auth extends CI_Controller
 				$username	 	= $this->input->post('username');
 				$password 		= $this->input->post('password');
 				$verif_code 	= $this->input->post('verif_code');
+				$email 			= $this->input->post('email');
 				$peringkat 		= $this->input->post('peringkat');
 				if (empty($password) || empty($peringkat) || empty($verif_code)) {
 					$this->session->set_flashdata('message_login_error', 'Data yang dimasukan Kosong');
@@ -49,6 +54,7 @@ class Auth extends CI_Controller
 						'username' 			=> $username,
 						'password' 			=> $password,
 						'Verification_Code' => $verif_code,
+						'Email' 			=> $email,
 						'peringkat' 		=> $peringkat
 					);
 					$this->Auth_model->update($id,$dataupdate);
@@ -68,14 +74,16 @@ class Auth extends CI_Controller
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 			$verif_code = $this->input->post('verif_code');
+			$email = $this->input->post('email');
 			$peringkat = $this->input->post('peringkat');
-			if (empty($password) || empty($peringkat) || empty($verif_code) || empty($username)) {
+			if (empty($password) || empty($peringkat) || empty($verif_code) || empty($email) || empty($username)) {
 				$this->session->set_flashdata('message_login_error', 'Data yang dimasukan Kosong');
 			}else{
 				$datainsert = array(
 					'username' 			=> $username,
 					'password' 			=> $password,
 					'Verification_Code' => $verif_code,
+					'Email' 			=> $email,
 					'peringkat' 		=> $peringkat
 				);
 				$this->Auth_model->insert($datainsert);
@@ -87,16 +95,16 @@ class Auth extends CI_Controller
 	}
 
 	function reset_password($verf){
-		$verif_code = $this->input->post('verif_code');
-		$data['validate'] = $this->Auth_model->valdas_code($verif_code);
+		// $verif_code = $this->input->post('verif_code');
+		$data['validate'] = $this->Auth_model->valdas_code($verf);
 		if($this->input->post('forgot') != NULL ){
 			$password = $this->input->post('password');
-			$verf2 = $this->input->post('verfcode');
+			$verf2 = $this->input->get('vcode');
 			$dataupdate = array(
 				'password' 			=> $password,
 			);
-			$this->Auth_model->recover($verf2,$dataupdate);
-			echo $password."|".$verf2;
+			$this->Auth_model->recover($verf,$dataupdate);
+			echo $password."|".$verf;
 			$this->session->set_flashdata('message_login_error', 'password berhasil di reset');
 			redirect('/');
 		}else if ($data['validate']) {
@@ -123,38 +131,60 @@ class Auth extends CI_Controller
 	}
 
 	function send_mail(){		
-		require 'plugins/PHPMailer/Exception.php'; 
-		require 'plugins/PHPMailer/PHPMailer.php'; 
-		require 'plugins/PHPMailer/SMTP.php'; 
+		$email = $this->input->post('email');
+		$validasi = $this->Auth_model->check_email($email);
+        if (!empty($validasi)) {
+            $this->load->config('email');
+			$this->load->library('email');
+
+			$this->email->set_newline("\r\n");
+
+			$this->email->from('mail@bawaslubali.ac.id', 'Bawaslu Bali'); 
+			$this->email->to($email); 
 		
-		$mail = new PHPMailer; 
+			$this->email->subject('Recovery Code'); 
+
+			$codegenerate = $this->generateRandomString();
+			$link = "http://localhost/Auth/reset_password/".$codegenerate."";
+			$bodyContent = '<br>Trouble signing in?<br>';
+			$bodyContent .= '<br>Resetting your password is easy.<br>';
+			$bodyContent .= '<br>Just press the button below and follow the instructions. We"ll have you up and running in no time.<br>';
+			$bodyContent .= '<br>Verification Code : '.$codegenerate.'<br>';
+			
+			$bodyContent .= "<br>http://localhost/Auth/reset_password/".$codegenerate."<br>";
+			$bodyContent .= "<br><a href='http://localhost/Auth/reset_password/".$codegenerate."' target='_blank' rel='noopener'>Link</a><br>";
+			$bodyContent .= '<br>If you did not make this request then please ignore this email.<br>';
+
+			$this->email->message($bodyContent);
+			
+			// Send email 
+			if(!$this->email->send()) { 
+				show_error($this->email->print_debugger());
+			} else { 
+				$dataupdate = array(
+					'Verification_Code' => $codegenerate,
+				);
+				$this->Auth_model->reset_verf($email,$dataupdate);
+				$this->session->set_flashdata('message_login_error', 'Activation Code Sudah terkirim , Silahkan Cek email kamu');
+				redirect('/');
+			}
+        }else{
+			echo"babi";
+            $this->session->set_flashdata('message_login_error', 'Email Tidak Ada');
+			redirect('/');
+        }
+
+
 		
-		$mail->isSMTP();                                    // Set mailer to use SMTP 
-		$mail->Host = 'mail.dhome.id';             // Specify main and backup SMTP servers 
-		$mail->SMTPAuth = true;                             // Enable SMTP authentication 
-		$mail->Username = 'mail@dhome.id';         // SMTP username 
-		$mail->Password = 'Ujku.AaQr^]Y';                        // SMTP password 
-		$mail->SMTPSecure = 'ssl';                          // Enable TLS encryption, `ssl` also accepted 
-		$mail->Port = 465;                                  // TCP port to connect to 
-		
-		$mail->setFrom('mail@bawaslubali.ac.id', 'Bawaslu Bali'); 
-		$mail->addAddress('yarumeshina@gmail.com'); 
-		$mail->isHTML(true); 
-		
-		// Mail subject 
-		$mail->Subject = 'Recovery Password'; 
-		
-		// Mail body content 
-		$bodyContent = '<h1>Berikut Merupakan kode / Link untuk verifikasi Kode</h1>'; 
-		$bodyContent .= '<p>Ambibu</p>'; 
-		$mail->Body    = $bodyContent; 
-		
-		// Send email 
-		if(!$mail->send()) { 
-			echo 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo; 
-		} else { 
-			echo 'Message has been sent.'; 
-		}
 	}
 
+	function generateRandomString() {
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < 15; $i++) {
+			$randomString .= $characters[random_int(0, $charactersLength - 1)];
+		}
+		return $randomString;
+	}
 }

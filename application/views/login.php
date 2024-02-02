@@ -112,9 +112,9 @@
           <div class="modal-body">
             
           <div class="form-group has-feedback">
-          <form action='activation' method="post">
-            <label for="exampleInputEmail1">Verification Code</label>
-            <input type="text" name="verif_code" class="form-control" id="verif_code" placeholder="Masukkan Verification Code">
+          <form action='Send_email' method="post">
+            <label for="exampleInputEmail1">Email</label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan Email">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
 
