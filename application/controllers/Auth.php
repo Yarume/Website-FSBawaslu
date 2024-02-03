@@ -148,14 +148,15 @@ class Auth extends CI_Controller
 			$this->email->subject('Recovery Code'); 
 
 			$codegenerate = $this->generateRandomString();
-			$link = "".base_url('/')."Auth/reset_password/".$codegenerate."";
+			$link = "".base_url('/')."activation/".$codegenerate."";
 			$bodyContent = '<br>Trouble signing in?<br>';
 			$bodyContent .= '<br>Resetting your password is easy.<br>';
 			$bodyContent .= '<br>Just press the button below and follow the instructions. We"ll have you up and running in no time.<br>';
 			$bodyContent .= '<br>Verification Code : '.$codegenerate.'<br>';
+
+			$bodyContent .= "<p><strong>".base_url('/')."activation/".$codegenerate."</strong></p>";
 			
-			$bodyContent .= "<br>".base_url('/')."Auth/reset_password/".$codegenerate."<br>";
-			$bodyContent .= "<br><a href='".base_url('/')."Auth/reset_password/".$codegenerate."' target='_blank' rel='noopener'>Link</a><br>";
+			$bodyContent .= "<br><a href='".base_url('/')."activation/".$codegenerate."' target='_blank' rel='noopener'>Link</a><br>";
 			$bodyContent .= '<br>If you did not make this request then please ignore this email.<br>';
 
 			$this->email->message($bodyContent);

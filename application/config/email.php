@@ -8,4 +8,6 @@ $config = array(
     'smtp_pass' => 'TIE?2!,brJu3',
     'smtp_crypto' => 'ssl', //can be 'ssl' or 'tls' for example
     'mailtype' => 'html', //plaintext 'text' mails or 'html'
+    'charset' => 'utf-8',
+    'wordwrap' => TRUE
 );
