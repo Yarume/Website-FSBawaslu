@@ -73,11 +73,14 @@ class Auth extends CI_Controller
 		if($this->input->post('submit') != NULL ){
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
+			$repassword = $this->input->post('password2');
 			$verif_code = $this->input->post('verif_code');
 			$email = $this->input->post('email');
 			$peringkat = $this->input->post('peringkat');
 			if (empty($password) || empty($peringkat) || empty($verif_code) || empty($email) || empty($username)) {
 				$this->session->set_flashdata('message_login_error', 'Data yang dimasukan Kosong');
+			}else if($password != $repassword){
+				$this->session->set_flashdata('message_login_error', 'Password tidak sama');
 			}else{
 				$datainsert = array(
 					'username' 			=> $username,

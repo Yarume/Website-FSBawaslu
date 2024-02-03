@@ -46,6 +46,10 @@
             <input type="text" class="form-control" value="" name="password" id="password" placeholder="Masukan Password">
         </div>
         <div class="form-group">
+            <label for="uraian">Re-Password</label>
+            <input type="text" class="form-control" value="" name="password2" id="password2" placeholder="Masukan Password">
+        </div>
+        <div class="form-group">
             <label for="uraian">Email</label>
             <input type="email" class="form-control" value="" name="email" id="email" placeholder="Masukan Email">
         </div>
