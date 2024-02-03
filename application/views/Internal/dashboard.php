@@ -14,7 +14,7 @@
                 <div class="small-box bg-aqua">
                     <div class="inner">
                     <h3><?= $count_hukum; ?></h3>
-                        <p>Hukum dan Penyelesaian Sengketa</p>
+                        <p>Hukum dan Penyelesaian <br> Sengketa</p>
                     </div>
                     <div class="icon">
                         <i class="ion-android-checkbox-outline"></i>
@@ -29,7 +29,7 @@
                 <div class="small-box bg-yellow">
                     <div class="inner">
                     <h3><?= $count_pencegahan; ?></h3>
-                        <p>Pencegahan PARMAS & HUMAS</p>
+                        <p>Pencegahan <br> PARMAS & HUMAS</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>

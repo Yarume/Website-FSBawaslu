@@ -6,7 +6,7 @@ class Sdm_model extends CI_Model
 
     function getAllSdm()
     {
-        if($this->session->userdata('peringkat') == "guest")
+        if($this->session->userdata('peringkat') == "staff")
             $query = $this->db->where('Status','Valid')->get($this->_tables);
         else 
             $query = $this->db->get($this->_tables);
