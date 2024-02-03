@@ -145,14 +145,14 @@ class Auth extends CI_Controller
 			$this->email->subject('Recovery Code'); 
 
 			$codegenerate = $this->generateRandomString();
-			$link = "http://localhost/Auth/reset_password/".$codegenerate."";
+			$link = "".base_url('/')."Auth/reset_password/".$codegenerate."";
 			$bodyContent = '<br>Trouble signing in?<br>';
 			$bodyContent .= '<br>Resetting your password is easy.<br>';
 			$bodyContent .= '<br>Just press the button below and follow the instructions. We"ll have you up and running in no time.<br>';
 			$bodyContent .= '<br>Verification Code : '.$codegenerate.'<br>';
 			
-			$bodyContent .= "<br>http://localhost/Auth/reset_password/".$codegenerate."<br>";
-			$bodyContent .= "<br><a href='http://localhost/Auth/reset_password/".$codegenerate."' target='_blank' rel='noopener'>Link</a><br>";
+			$bodyContent .= "<br>".base_url('/')."Auth/reset_password/".$codegenerate."<br>";
+			$bodyContent .= "<br><a href='".base_url('/')."Auth/reset_password/".$codegenerate."' target='_blank' rel='noopener'>Link</a><br>";
 			$bodyContent .= '<br>If you did not make this request then please ignore this email.<br>';
 
 			$this->email->message($bodyContent);
@@ -173,8 +173,6 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message_login_error', 'Email Tidak Ada');
 			redirect('/');
         }
-
-
 		
 	}
 
