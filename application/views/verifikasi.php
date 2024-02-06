@@ -24,7 +24,7 @@
                 <tr>
                     <th>No</th>
                     <th>Tanggal</th>
-                    <th>User</th>
+                    <th>Uploader</th>
                     <th>Uraian</th>
                     <th>File</th>
                     <th>Keterangan</th>
@@ -38,7 +38,12 @@
                     <tr>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data_h->Tanggal; ?></td>
-                        <td><?php echo $data_h->username; ?></td>
+                        <?php
+                          $CI =& get_instance();
+                          $CI->load->model('Auth_model');
+                          $result = $CI->Auth_model->get_username($data_h->user_id);
+                        ?>
+                        <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
                         <td><a href="<?php echo base_url('uploads/').$data_h->File; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
                         <td>Divisi - Hukum</td>
@@ -53,7 +58,12 @@
                     <tr>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data_h->Tanggal; ?></td>
-                        <td><?php echo $data_h->username; ?></td>
+                        <?php
+                          $CI =& get_instance();
+                          $CI->load->model('Auth_model');
+                          $result = $CI->Auth_model->get_username($data_h->user_id);
+                        ?>
+                        <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
                         <td><a href="<?php echo base_url('uploads/').$data_h->File; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
                         <td>Divisi - Penanganan</td>
@@ -68,7 +78,12 @@
                     <tr>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data_h->Tanggal; ?></td>
-                        <td><?php echo $data_h->username; ?></td>
+                        <?php
+                          $CI =& get_instance();
+                          $CI->load->model('Auth_model');
+                          $result = $CI->Auth_model->get_username($data_h->user_id);
+                        ?>
+                        <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
                         <td><a href="<?php echo base_url('uploads/').$data_h->File; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
                         <td>Divisi - Pencegahan</td>
@@ -83,7 +98,12 @@
                     <tr>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data_h->Tanggal; ?></td>
-                        <td><?php echo $data_h->username; ?></td>
+                        <?php
+                          $CI =& get_instance();
+                          $CI->load->model('Auth_model');
+                          $result = $CI->Auth_model->get_username($data_h->user_id);
+                        ?>
+                        <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
                         <td><a href="<?php echo base_url('uploads/').$data_h->File; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
                         <td>Divisi - Sdm</td>

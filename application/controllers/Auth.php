@@ -47,7 +47,7 @@ class Auth extends CI_Controller
 				$verif_code 	= $this->input->post('verif_code');
 				$email 			= $this->input->post('email');
 				$peringkat 		= $this->input->post('peringkat');
-				if (empty($password) || empty($peringkat) || empty($verif_code)) {
+				if (empty($password) || empty($peringkat)) {
 					$this->session->set_flashdata('message_login_error', 'Data yang dimasukan Kosong');
 				}else{
 					$dataupdate = array(
@@ -77,7 +77,7 @@ class Auth extends CI_Controller
 			$verif_code = $this->input->post('verif_code');
 			$email = $this->input->post('email');
 			$peringkat = $this->input->post('peringkat');
-			if (empty($password) || empty($peringkat) || empty($verif_code) || empty($email) || empty($username)) {
+			if (empty($password) || empty($peringkat) || empty($email) || empty($username)) {
 				$this->session->set_flashdata('message_login_error', 'Data yang dimasukan Kosong');
 			}else if($password != $repassword){
 				$this->session->set_flashdata('message_login_error', 'Password tidak sama');

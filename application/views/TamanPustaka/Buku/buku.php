@@ -30,6 +30,9 @@ foreach ($raw_data as $data) : ?>
       <h3 class="profile-username text-center"></h3>
       <ul class="list-group list-group-unbordered">
       <li class="list-group-item">
+          <b>Judul</b> <a class="pull-right"><?php echo $data->nama; ?></a>
+        </li>
+        <li class="list-group-item">
           <b>Penulis</b> <a class="pull-right"><?php echo $data->penulis; ?></a>
         </li>
         <li class="list-group-item">
