@@ -42,7 +42,11 @@
         </div>
         <div class="form-group">
             <label for="uraian">Password</label>
-            <input type="text" class="form-control" value="<?= $validate[0] ? $validate[0]->password : ''; ?>" name="password" id="password">
+            <input type="text" class="form-control" value="" name="password" id="password">
+        </div>
+        <div class="form-group">
+            <label for="uraian">Re-Type Password</label>
+            <input type="text" class="form-control" value="" name="password1" id="password1">
         </div>
         <div class="form-group">
             <label for="uraian">Verification Code</label>

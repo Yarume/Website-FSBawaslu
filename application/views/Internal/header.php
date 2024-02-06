@@ -96,7 +96,8 @@
           <img src="<?= base_url(); ?>assets/img/logobawaslu2.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?= strtoupper($this->session->userdata('username')) ?></p>
+          <p><?= strtoupper($this->session->userdata('username')) ?> - <?= strtoupper($this->session->userdata('peringkat')) ?></p>
+          
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>

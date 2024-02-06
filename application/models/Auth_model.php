@@ -20,7 +20,8 @@ class Auth_model extends CI_Model
 		$data_session = array(
 			'username' => $username,
 			'status' => "login",
-			'peringkat' => $query2[0]['peringkat']
+			'peringkat' => $query2[0]['peringkat'],
+			'user_id' => $query2[0]['user_id']
 			);
 			$this->session->set_userdata($data_session);
 		return TRUE;
@@ -69,6 +70,10 @@ class Auth_model extends CI_Model
 
 	function check_email($email){
 		$query = $this->db->select('email')->where('email',$email)->get($this->_table);
+        return $query->result();
+	}
+	function get_username($id){
+		$query = $this->db->select('username')->where('user_id',$id)->get($this->_table);
         return $query->result();
 	}
 

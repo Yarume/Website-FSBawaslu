@@ -102,14 +102,21 @@ class Auth extends CI_Controller
 		$data['validate'] = $this->Auth_model->valdas_code($verf);
 		if($this->input->post('forgot') != NULL ){
 			$password = $this->input->post('password');
+			$password1 = $this->input->post('password1');
 			$verf2 = $this->input->get('vcode');
-			$dataupdate = array(
-				'password' 			=> $password,
-			);
-			$this->Auth_model->recover($verf,$dataupdate);
-			echo $password."|".$verf;
-			$this->session->set_flashdata('message_login_error', 'password berhasil di reset');
-			redirect('/');
+			if (($password == $password1) && !empty($password) && !empty($password1)) {
+				$dataupdate = array(
+					'password' 			=> $password,
+				);
+				$this->Auth_model->recover($verf,$dataupdate);
+				echo $password."|".$verf;
+				$this->session->set_flashdata('message_login_error', 'password berhasil di reset');
+				redirect('/');
+			}else{
+				$this->session->set_flashdata('message_login_error', 'Password Tidak cocok, silahkan di input kembali');
+				redirect($_SERVER['REQUEST_URI'], 'refresh'); 
+			}
+			
 		}else if ($data['validate']) {
 			$this->load->view('auth/forgot', $data);
 		}else{

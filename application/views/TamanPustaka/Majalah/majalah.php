@@ -31,7 +31,12 @@ foreach ($raw_data as $data) : ?>
           <b>Edisi</b> <a class="pull-right"><?php echo $data->edisi; ?></a>
         </li>
         <li class="list-group-item">
-          <b>Uploader</b> <a class="pull-right"><?php echo $data->nama; ?></a>
+          <?php
+          $CI =& get_instance();
+          $CI->load->model('Auth_model');
+          $result = $CI->Auth_model->get_username($data->user_id);
+          ?>
+          <b>Uploader</b> <a class="pull-right"><?php echo $result[0]->username ?></a>
         </li>
         <li class="list-group-item">
           <b>Tanggal Upload</b> <a class="pull-right"><?php echo $data->tanggal; ?></a>

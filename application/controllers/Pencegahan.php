@@ -49,7 +49,7 @@ class Pencegahan extends CI_Controller
 
             }else if($filenem){
                 $datainsert = array(
-                    'username' => $this->session->userdata('username'),
+                    'user_id' => $this->session->userdata('user_id'),
                     'Tanggal' => date('Y-m-d'),
                     'Kode' => $kode,
                     'Uraian' => $uraian,
@@ -95,7 +95,7 @@ class Pencegahan extends CI_Controller
                         'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
                     );
                     $riwayat = array(
-                        'username' => $this->session->userdata('username'),
+                        'user_id' => $this->session->userdata('user_id'),
                         'divisi' => 'Pencegahan',
                         'divisi_no' => $id,
                         'kode' => $kode,

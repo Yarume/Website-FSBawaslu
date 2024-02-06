@@ -58,7 +58,7 @@ class Tamanpustaka extends CI_Controller
 
             }else if($filenem){
                 $datainsert = array(
-                    'nama' => $this->session->userdata('username'),
+                    'user_id' => $this->session->userdata('user_id'),
                     'penulis' => $penulis,
                     'penerbit' => $penerbit,
                     'file' => 'TamanPustaka/Buku/'.$filenem,
@@ -97,7 +97,7 @@ class Tamanpustaka extends CI_Controller
 
             }else if($filenem){
                 $datainsert = array(
-                    'nama' => $this->session->userdata('username'),
+                    'user_id' => $this->session->userdata('user_id'),
                     'edisi' => $edisi,
                     'file' => 'TamanPustaka/Majalah/'.$filenem,
                     'tanggal' => date('Y-m-d')
