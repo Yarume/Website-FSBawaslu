@@ -86,6 +86,7 @@
                 <thead>
                 <tr>
                   <th>No</th>
+                  <th>uploader</th>
                   <th>Nama</th>
                   <th>Divisi</th>
                   <th>Taman Pustaka</th>
@@ -99,6 +100,12 @@
                 foreach ($Hukum as $data_h) : ?>
                     <tr>
                         <td><?php echo $no++; ?></td>
+                        <?php
+                        $CI =& get_instance();
+                        $CI->load->model('Auth_model');
+                        $result = $CI->Auth_model->get_username($data_h->user_id);
+                        ?>
+                        <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
                         <td>Divisi - Hukum</td>
                         <td></td>
@@ -113,6 +120,12 @@
                 foreach ($Pencegahan as $data_h) : ?>
                     <tr>
                         <td><?php echo $no++; ?></td>
+                        <?php
+                        $CI =& get_instance();
+                        $CI->load->model('Auth_model');
+                        $result = $CI->Auth_model->get_username($data_h->user_id);
+                        ?>
+                        <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
                         <td>Divisi - Pencegahan</td>
                         <td></td>
@@ -127,6 +140,12 @@
                 foreach ($Penanganan as $data_h) : ?>
                     <tr>
                         <td><?php echo $no++; ?></td>
+                        <?php
+                        $CI =& get_instance();
+                        $CI->load->model('Auth_model');
+                        $result = $CI->Auth_model->get_username($data_h->user_id);
+                        ?>
+                        <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
                         <td>Divisi - Penanganan</td>
                         <td></td>
@@ -142,6 +161,12 @@
                 foreach ($Sdm as $data_h) : ?>
                     <tr>
                         <td><?php echo $no++; ?></td>
+                        <?php
+                        $CI =& get_instance();
+                        $CI->load->model('Auth_model');
+                        $result = $CI->Auth_model->get_username($data_h->user_id);
+                        ?>
+                        <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
                         <td>Divisi - SDM</td>
                         <td></td>
@@ -157,6 +182,12 @@
                 foreach ($Buku as $data_h) : ?>
                     <tr>
                         <td><?php echo $no++; ?></td>
+                        <?php
+                        $CI =& get_instance();
+                        $CI->load->model('Auth_model');
+                        $result = $CI->Auth_model->get_username($data_h->user_id);
+                        ?>
+                        <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->nama; ?></td>
                         <td></td>
                         <td>Buku</td>
@@ -171,6 +202,12 @@
                 foreach ($Majalah as $data_h) : ?>
                     <tr>
                         <td><?php echo $no++; ?></td>
+                        <?php
+                        $CI =& get_instance();
+                        $CI->load->model('Auth_model');
+                        $result = $CI->Auth_model->get_username($data_h->user_id);
+                        ?>
+                        <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->nama; ?></td>
                         <td></td>
                         <td>Majalah</td>

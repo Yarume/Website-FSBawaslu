@@ -77,7 +77,12 @@
                         <tr>
                             <td><?php echo $no++; ?></td>
                             <td><?php echo $data_riwayat->tanggal; ?></td>
-                            <td><?php echo $data_riwayat->username; ?></td>
+                            <?php
+                            $CI =& get_instance();
+                            $CI->load->model('Auth_model');
+                            $result = $CI->Auth_model->get_username($data_riwayat->user_id);
+                            ?>
+                            <td><?php echo $result[0]->username ?></td>
                             <td><?php echo $data_riwayat->nama_file; ?></td>
                             <td><a href="<?php echo base_url('uploads/').$data_riwayat->nama_file; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
                         </tr>
