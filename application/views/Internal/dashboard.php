@@ -103,7 +103,7 @@
                         <?php
                         $CI =& get_instance();
                         $CI->load->model('Auth_model');
-                        $result = $CI->Auth_model->get_username($data_h->user_id);
+                        $result = $CI->Auth_model->get_username($data_h->User_id);
                         ?>
                         <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
@@ -123,7 +123,7 @@
                         <?php
                         $CI =& get_instance();
                         $CI->load->model('Auth_model');
-                        $result = $CI->Auth_model->get_username($data_h->user_id);
+                        $result = $CI->Auth_model->get_username($data_h->User_id);
                         ?>
                         <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
@@ -143,7 +143,7 @@
                         <?php
                         $CI =& get_instance();
                         $CI->load->model('Auth_model');
-                        $result = $CI->Auth_model->get_username($data_h->user_id);
+                        $result = $CI->Auth_model->get_username($data_h->User_id);
                         ?>
                         <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>
@@ -164,7 +164,7 @@
                         <?php
                         $CI =& get_instance();
                         $CI->load->model('Auth_model');
-                        $result = $CI->Auth_model->get_username($data_h->user_id);
+                        $result = $CI->Auth_model->get_username($data_h->User_id);
                         ?>
                         <td><?php echo $result[0]->username ?></td>
                         <td><?php echo $data_h->Uraian; ?></td>

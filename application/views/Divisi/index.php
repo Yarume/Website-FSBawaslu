@@ -52,7 +52,7 @@
                         <td><?php echo $data->Uraian; ?></td>
                         
                         <td><a href="<?php echo base_url('uploads/').$data->File; ?>" target="_blank" rel="noopener noreferrer">File</a></td>
-                        <td><a href="<?php echo $data->link; ?>" target="_blank" rel="noopener noreferrer">Link</a></td>
+                        <td><a href="<?php echo $data->Link; ?>" target="_blank" rel="noopener noreferrer">Link</a></td>
                         <?php 
                         if ($this->session->userdata('peringkat') != 'staff') {
                             switch ($data->Status) {

@@ -29,11 +29,21 @@
                 </div>
                 <div class="form-group">
                     <label for="Link">Link</label>
-                    <input type="text" class="form-control" name="link" name="link" value="<?= $dataedit->link ?>">
+                    <input type="text" class="form-control" name="link" name="link" value="<?= $dataedit->Link ?>">
                 </div>
                 <div class="form-group">
                     <label for="Link">Catatan / Alasan Ditolak</label>
-                    <input type="text" class="form-control" value="<?= $dataedit->catatan ?>" disabled>
+                    <input type="text" class="form-control" value="<?= $dataedit->Catatan ?>" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="Link">Files</label>
+
+                  <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" value="<?= base_url()."uploads/".$dataedit->File; ?>" disabled>
+                  <span class="input-group-btn">
+                    <a href="<?= base_url()."uploads/".$dataedit->File; ?>" target="_blank" rel="noopener noreferrer" class="btn btn-info btn-flat">View File</a>
+                  </span>
+                  </div>
                 </div>
                 <?php
                 if($this->session->userdata('peringkat') != "staff"){

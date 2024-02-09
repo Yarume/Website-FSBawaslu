@@ -7,10 +7,8 @@ class Dashboard extends CI_Controller
 		parent::__construct();
 		$this->load->model('Auth_model');
 
-		$this->load->model('Hukum_model');
-		$this->load->model('Penanganan_model');
-		$this->load->model('Pencegahan_model');
-		$this->load->model('Sdm_model');
+		$this->load->model('Devisi_model');
+		
 		$this->load->model('Buku_model');
 		$this->load->model('Majalah_model');
 
@@ -20,16 +18,19 @@ class Dashboard extends CI_Controller
 		
 	}
 	function index(){
-		$data['Hukum'] = $this->Hukum_model->getAllHukum();
-        $data['Penanganan'] = $this->Penanganan_model->getAllPenanganan();
-        $data['Pencegahan'] = $this->Pencegahan_model->getAllPencegahan();
-        $data['Sdm'] = $this->Sdm_model->getAllSdm();
-		$data['Buku'] = $this->Buku_model->show_all_data();
-		$data['Majalah'] = $this->Majalah_model->show_all_data();
-		$data['count_hukum'] = $this->Hukum_model->count_data();
-		$data['count_penanganan'] = $this->Penanganan_model->count_data();
-		$data['count_pencegahan'] = $this->Pencegahan_model->count_data();
-		$data['count_sdm'] = $this->Sdm_model->count_data();
+		$data['Hukum'] 				= $this->Devisi_model->show_data_type('hukum');
+        $data['Penanganan'] 		= $this->Devisi_model->show_data_type('penanganan');
+        $data['Pencegahan'] 		= $this->Devisi_model->show_data_type('pencegahan');
+        $data['Sdm'] 				= $this->Devisi_model->show_data_type('sdm');
+
+		$data['Buku'] 				= $this->Buku_model->show_all_data();
+		$data['Majalah']			= $this->Majalah_model->show_all_data();
+
+		$data['count_hukum'] 		= $this->Devisi_model->count_data_type('hukum');
+		$data['count_penanganan'] 	= $this->Devisi_model->count_data_type('penanganan');
+		$data['count_pencegahan'] 	= $this->Devisi_model->count_data_type('pencegahan');
+		$data['count_sdm'] 			= $this->Devisi_model->count_data_type('sdm');
+
 		$this->load->view('Internal/header');
         $this->load->view('Internal/dashboard',$data);
         $this->load->view('Internal/footer');
@@ -54,5 +55,9 @@ class Dashboard extends CI_Controller
 		}
 		echo $randomString;
 	}
-	
+
+	function testing(){
+		$data = $this->Devisi_model->get_where(1,'hukum');
+		echo $data[0]->Catatan;
+	}
 }

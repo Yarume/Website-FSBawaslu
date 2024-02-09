@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
             <label for="uraian">Link</label>
-            <input type="text" class="form-control" value="<?= $data->link; ?>" disabled>
+            <input type="text" class="form-control" value="<?= $data->Link; ?>" disabled>
         </div>
         <div class="form-group">
             <label for="uraian">Unduh File</label>

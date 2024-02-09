@@ -2,31 +2,104 @@
 
 class Penanganan extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Penanganan_model');
+        $this->load->model('Devisi_model');
         $this->load->model('Riwayat_Model');
-
         $this->load->helper('url');
         if($this->session->userdata('status') != "login"){
 			redirect(base_url("/"));
 		}
+        $this->_type = 'penanganan';
     }
 
     public function index()
     {
-        $data['raw_data'] = $this->Penanganan_model->getAllPenanganan();
+        $data['raw_data'] = $this->Devisi_model->show_data_type($this->_type);
         $data['title'] = 'Data File Divisi Penanganan Pelanggaran, Data & Informasi';
-        $data['divisi'] = 'penanganan';
+        $data['divisi'] = $this->_type;
         $this->load->view('Internal/header');
         $this->load->view('Divisi/index', $data);
         $this->load->view('Internal/footer');
     }
 
-    public function upload_data()
-    {
+    public function edit_data($id){
+        if($this->session->userdata('peringkat') == "staff"){
+			redirect(base_url("/dashboard"));
+		}
+        $validasi = $this->Devisi_model->get_where($id,$this->_type);
+        $riwayat_data = $this->Riwayat_Model->get_where($id,$this->_type);
+        if (!empty($validasi)) {
+            $data['dataedit'] = $validasi[0];
+            $data['riwayat'] = $riwayat_data;
+            
+            if($this->input->post('update') != NULL ){ 
+                $kode = $this->input->post('kode');
+                $uraian = $this->input->post('uraian');
+                $link = $this->input->post('link');
+
+                $suadmin = ($this->session->userdata('peringkat') == "admin");
+
+                //filesystem
+                $isfile = (empty($_FILES['file']['name']));
+                $filenem = $this->upload_file();
+                if (!$isfile) {
+                    $fileupload = array(
+                        'File' => 'Penanganan/'.$filenem,
+                        'Link' => $link
+                    );
+                }else{
+                    $fileupload = array(
+                        'Link' => $link
+                    );
+                }
+                $this->Devisi_model->update_file($validasi[0]->File_id,$fileupload);
+
+                //dataupdate
+                $ArrUpdate = array(
+                    'Kode' => $kode,
+                    'Uraian' => $uraian,
+                    'Catatan' => '',
+                    'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
+                );
+                $riwayat = array(
+                    'user_id' => $this->session->userdata('user_id'),
+                    'divisi' => $this->_type,
+                    'divisi_no' => $id,
+                    'kode' => $kode,
+                    'nama_file' => 'Penanganan/'.$filenem
+                );
+                $this->Devisi_model->update_data($id, $ArrUpdate);
+
+                $this->Riwayat_Model->insert($riwayat);
+                redirect(base_url('/penanganan'));
+            }
+            //load view
+            $this->load->view('Internal/header');
+            $this->load->view('Divisi/edit',$data);
+            $this->load->view('Internal/footer');
+        }else{
+            echo "data tidak ada";
+        }
+    }
+    public function delete_data($id){
+        if($this->session->userdata('peringkat') != "admin"){
+			redirect(base_url("/dashboard"));
+		}
+
+        $validasi = $this->Devisi_model->get_where($id,$this->_type);
+
+        if (!empty($validasi)) {
+            $fileid = $validasi[0]->File_id;
+            $this->Devisi_model->delete($id,$fileid);
+            redirect(base_url('/penanganan'));
+        }else{
+            echo "data tidak ada";
+        }
+
+    }
+    function upload_data(){
         if($this->session->userdata('peringkat') == "staff"){
 			redirect(base_url("/dashboard"));
 		}
@@ -46,93 +119,32 @@ class Penanganan extends CI_Controller
                 $data['response'] = 'Gagal!, File belum di pilih';
 
             }else if($filenem){
+                $fileupload = array(
+                    'File' => 'Penanganan/'.$filenem,
+                    'Link' => $link
+                );
+                $fileid = $this->Devisi_model->insert_upload_file($fileupload);
                 $datainsert = array(
+                    'Type' => $this->_type,
                     'user_id' => $this->session->userdata('user_id'),
                     'Tanggal' => date('Y-m-d'),
                     'Kode' => $kode,
                     'Uraian' => $uraian,
-                    'File' => 'Penanganan/'.$filenem,
-                    'link' => $link,
+                    'File_id' => $fileid,
                     'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
                 );
-                $this->Penanganan_model->insert($datainsert);
+                $this->Devisi_model->insert_devisi($datainsert);
                 $data['response'] = 'successfully uploaded'; 
-                redirect('/Penanganan');
+                redirect('/penanganan');
             }else{
                 $data['response'] = 'Gagal memasukan data !';
             }
-            $this->load->view('Divisi/upload', $data);
+            $this->load->view('Divisi/upload',$data);
         }else{
             $this->load->view('Divisi/upload');
         }
     }
-
-    public function edit_data($id){
-        if($this->session->userdata('peringkat') == "staff"){
-			redirect(base_url("/dashboard"));
-		}
-        $validasi = $this->Penanganan_model->get_where($id);
-        $riwayat_data = $this->Riwayat_Model->get_where($id,'Penanganan');
-        if (!empty($validasi)) {
-            $data['dataedit'] = $validasi[0];
-            $data['riwayat'] = $riwayat_data;
-            
-            if($this->input->post('update') != NULL ){ 
-                $kode = $this->input->post('kode');
-                $uraian = $this->input->post('uraian');
-                $link = $this->input->post('link');
-                $suadmin = ($this->session->userdata('peringkat') == "admin");
-                if (!empty($_FILES['file']['name'])) {
-                    $filenem = $this->upload_file();
-                    $ArrUpdate = array(
-                        'Kode' => $kode,
-                        'Uraian' => $uraian,
-                        'File' => 'Penanganan/'.$filenem,
-                        'link' => $link,
-                        'Catatan' => '',
-                        'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
-                    );
-                    $riwayat = array(
-                        'user_id' => $this->session->userdata('user_id'),
-                        'divisi' => 'Penanganan',
-                        'divisi_no' => $id,
-                        'kode' => $kode,
-                        'nama_file' => 'Penanganan/'.$filenem
-                    );
-                    $this->Riwayat_Model->insert($riwayat);
-                }else{
-                    $ArrUpdate = array(
-                        'Kode' => $kode,
-                        'Uraian' => $uraian,
-                        'Catatan' => '',
-                        'link' => $link,
-                        'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
-                    );
-                }
-                $this->Penanganan_model->update($id, $ArrUpdate);
-                redirect(base_url('/Penanganan'));
-            }
-            //load view
-            $this->load->view('Internal/header');
-            $this->load->view('Divisi/edit',$data);
-            $this->load->view('Internal/footer');
-        }else{
-            echo "data tidak ada";
-        }
-    }
-    public function delete_data($id){
-        if($this->session->userdata('peringkat') != "admin"){
-			redirect(base_url("/dashboard"));
-		}
-        $validasi = $this->Penanganan_model->get_where($id);
-        if (!empty($validasi)) {
-            $this->Penanganan_model->delete($id);
-            redirect(base_url('/penanganan'));
-        }else{
-            echo "data tidak ada";
-        }
-    }
-
+    
     function upload_file(){
         if($this->session->userdata('peringkat') == "staff"){
 			redirect(base_url("/dashboard"));

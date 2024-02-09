@@ -5,19 +5,20 @@ class Hukum extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Hukum_model');
+        $this->load->model('Devisi_model');
         $this->load->model('Riwayat_Model');
         $this->load->helper('url');
         if($this->session->userdata('status') != "login"){
 			redirect(base_url("/"));
 		}
+        $this->_type = 'hukum';
     }
 
     public function index()
     {
-        $data['raw_data'] = $this->Hukum_model->getAllHukum();
+        $data['raw_data'] = $this->Devisi_model->show_data_type($this->_type);
         $data['title'] = 'Data File Divisi Hukum & Penyelesaian Sengketa';
-        $data['divisi'] = 'hukum';
+        $data['divisi'] = $this->_type;
         $this->load->view('Internal/header');
         $this->load->view('Divisi/index', $data);
         $this->load->view('Internal/footer');
@@ -27,8 +28,8 @@ class Hukum extends CI_Controller
         if($this->session->userdata('peringkat') == "staff"){
 			redirect(base_url("/dashboard"));
 		}
-        $validasi = $this->Hukum_model->get_where($id);
-        $riwayat_data = $this->Riwayat_Model->get_where($id,'Hukum');
+        $validasi = $this->Devisi_model->get_where($id,$this->_type);
+        $riwayat_data = $this->Riwayat_Model->get_where($id,$this->_type);
         if (!empty($validasi)) {
             $data['dataedit'] = $validasi[0];
             $data['riwayat'] = $riwayat_data;
@@ -39,34 +40,39 @@ class Hukum extends CI_Controller
                 $link = $this->input->post('link');
 
                 $suadmin = ($this->session->userdata('peringkat') == "admin");
-                if (!empty($_FILES['file']['name'])) {
-                    $filenem = $this->upload_file();
-                    $ArrUpdate = array(
-                        'Kode' => $kode,
-                        'Uraian' => $uraian,
+
+                //filesystem
+                $isfile = (empty($_FILES['file']['name']));
+                $filenem = $this->upload_file();
+                if (!$isfile) {
+                    $fileupload = array(
                         'File' => 'Hukum/'.$filenem,
-                        'link' => $link,
-                        'Catatan' => '',
-                        'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
+                        'Link' => $link
                     );
-                    $riwayat = array(
-                        'user_id' => $this->session->userdata('user_id'),
-                        'divisi' => 'Hukum',
-                        'divisi_no' => $id,
-                        'kode' => $kode,
-                        'nama_file' => 'Hukum/'.$filenem
-                    );
-                    $this->Riwayat_Model->insert($riwayat);
                 }else{
-                    $ArrUpdate = array(
-                        'Kode' => $kode,
-                        'Uraian' => $uraian,
-                        'link' => $link,
-                        'Catatan' => '',
-                        'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
+                    $fileupload = array(
+                        'Link' => $link
                     );
                 }
-                $this->Hukum_model->update($id, $ArrUpdate);
+                $this->Devisi_model->update_file($validasi[0]->File_id,$fileupload);
+
+                //dataupdate
+                $ArrUpdate = array(
+                    'Kode' => $kode,
+                    'Uraian' => $uraian,
+                    'Catatan' => '',
+                    'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
+                );
+                $riwayat = array(
+                    'user_id' => $this->session->userdata('user_id'),
+                    'divisi' => $this->_type,
+                    'divisi_no' => $id,
+                    'kode' => $kode,
+                    'nama_file' => 'Hukum/'.$filenem
+                );
+                $this->Devisi_model->update_data($id, $ArrUpdate);
+
+                $this->Riwayat_Model->insert($riwayat);
                 redirect(base_url('/Hukum'));
             }
             //load view
@@ -81,13 +87,17 @@ class Hukum extends CI_Controller
         if($this->session->userdata('peringkat') != "admin"){
 			redirect(base_url("/dashboard"));
 		}
-        $validasi = $this->Hukum_model->get_where($id);
+
+        $validasi = $this->Devisi_model->get_where($id,$this->_type);
+
         if (!empty($validasi)) {
-            $this->Hukum_model->delete($id);
+            $fileid = $validasi[0]->File_id;
+            $this->Devisi_model->delete($id,$fileid);
             redirect(base_url('/Hukum'));
         }else{
             echo "data tidak ada";
         }
+
     }
     function upload_data(){
         if($this->session->userdata('peringkat') == "staff"){
@@ -101,6 +111,7 @@ class Hukum extends CI_Controller
             $kode = $this->input->post('kode');
             $uraian = $this->input->post('uraian');
             $link = $this->input->post('link');
+            $suadmin = ($this->session->userdata('peringkat') == "admin");
             if (empty($kode) && empty($uraian)) {
                 $data['response'] = 'Gagal!, kolom kode dan uraian kosong';
 
@@ -108,29 +119,21 @@ class Hukum extends CI_Controller
                 $data['response'] = 'Gagal!, File belum di pilih';
 
             }else if($filenem){
-                if($this->session->userdata('peringkat') == "admin"){
-                    $datainsert = array(
-                        'user_id' => $this->session->userdata('user_id'),
-                        'Tanggal' => date('Y-m-d'),
-                        'Kode' => $kode,
-                        'Uraian' => $uraian,
-                        'File' => 'Hukum/'.$filenem,
-                        'link' => $link,
-                        'Status' => 'Valid'
-                    );
-                }else{
-                    $datainsert = array(
-                        'user_id' => $this->session->userdata('user_id'),
-                        'Tanggal' => date('Y-m-d'),
-                        'Kode' => $kode,
-                        'Uraian' => $uraian,
-                        'File' => 'Hukum/'.$filenem,
-                        'link' => $link,
-                        'Status' => 'Butuh Validasi'
-                    );
-                }
-                
-                $this->Hukum_model->insert($datainsert);
+                $fileupload = array(
+                    'File' => 'Hukum/'.$filenem,
+                    'Link' => $link
+                );
+                $fileid = $this->Devisi_model->insert_upload_file($fileupload);
+                $datainsert = array(
+                    'Type' => $this->_type,
+                    'user_id' => $this->session->userdata('user_id'),
+                    'Tanggal' => date('Y-m-d'),
+                    'Kode' => $kode,
+                    'Uraian' => $uraian,
+                    'File_id' => $fileid,
+                    'Status' => ($suadmin ? 'Valid' : 'Butuh Validasi')
+                );
+                $this->Devisi_model->insert_devisi($datainsert);
                 $data['response'] = 'successfully uploaded'; 
                 redirect('/hukum');
             }else{
