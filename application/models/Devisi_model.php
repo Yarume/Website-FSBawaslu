@@ -13,12 +13,24 @@ class Devisi_model extends CI_Model
         return $query->result();
     }
     function show_data_type($type){
-        $query = $this->db
+        if($this->session->userdata('peringkat') == "staff"){
+			$query = $this->db
+                    ->select('*')
+                    ->where('Type',$type)
+                    ->where('Status', 'Valid')
+                    ->from($this->_tables)
+                    ->join($this->_table_upfile, ''.$this->_tables.'.File_id = '.$this->_table_upfile.'.id')
+                    ->get();
+		}else{
+            $query = $this->db
                     ->select('*')
                     ->where('Type',$type)
                     ->from($this->_tables)
                     ->join($this->_table_upfile, ''.$this->_tables.'.File_id = '.$this->_table_upfile.'.id')
                     ->get();
+        }
+
+        
         return $query->result();
     }
     function get_where($id,$type){
